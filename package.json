@@ -1,45 +1,53 @@
 {
-  "name": "",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "license": "AGPL-version-3.0",
-  "private": false,
-  "engines": {
-    "node": ">= 14.0.0",
-    "npm": ">= 6.0.0"
-  },
-  "homepage": "",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "bugs": "",
-  "keywords": [],
-  "author": {
-    "name": "MERN Minutemen",
-    "email": "",
-    "url": "https://github.com/pratimsadhu/CS-326-Project"
-  },
-  "contributors": [
-    {
-      "name": "Pratim Sadhu",
-      "email": "psadhu@umass.edu",
-      "github": "pratimsadhu"
+    "name": "",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "license": "AGPL-version-3.0",
+    "private": false,
+    "engines": {
+        "node": ">= 14.0.0",
+        "npm": ">= 6.0.0"
     },
-    {},
-    {},
-    {}
-  ],
-  "scripts": {
-    "dev": "",
-    "test": ""
-  },
-  "dependencies": {
-
-  },
-  "devDependencies": {
-
-  }
+    "homepage": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": "",
+    "keywords": [],
+    "author": {
+        "name": "MERN Minutemen",
+        "email": "",
+        "url": "https://github.com/pratimsadhu/CS-326-Project"
+    },
+    "contributors": [
+        {
+            "name": "",
+            "email": "",
+            "github": ""
+        },
+        {
+            "name": "",
+            "email": "",
+            "github": ""
+        },
+        {
+            "name": "",
+            "email": "",
+            "github": ""
+        },
+        {
+            "name": "Pratim Sadhu",
+            "email": "psadhu@umass.edu",
+            "github": "pratimsadhu"
+        }
+    ],
+    "scripts": {
+        "dev": "",
+        "test": ""
+    },
+    "dependencies": {},
+    "devDependencies": {}
 }
