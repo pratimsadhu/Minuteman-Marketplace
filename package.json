@@ -18,12 +18,19 @@
   "bugs": "",
   "keywords": [],
   "author": {
-    "name": "",
+    "name": "MERN Minutemen",
     "email": "",
-    "url": ""
+    "url": "https://github.com/pratimsadhu/CS-326-Project"
   },
   "contributors": [
-
+    {
+      "name": "Pratim Sadhu",
+      "email": "psadhu@umass.edu",
+      "github": "pratimsadhu"
+    },
+    {},
+    {},
+    {}
   ],
   "scripts": {
     "dev": "",
