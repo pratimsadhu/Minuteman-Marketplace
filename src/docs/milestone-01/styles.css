@@ -1,0 +1,20 @@
+#team, #vision {
+    text-align: center
+}
+
+#bios {
+    display: inline-flex;
+    text-align: justify;
+    
+}
+
+.bio {
+    border: 1.5px solid black;
+    padding: 5px;
+    width: 25%;
+}
+
+.bio-name {
+    font-weight: 700;
+}
+
