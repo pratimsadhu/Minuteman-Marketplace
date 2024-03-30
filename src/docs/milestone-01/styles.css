@@ -1,20 +1,28 @@
 #team, #vision {
-    text-align: center
+    text-align: center;
 }
 
-#bios {
-    display: inline-flex;
-    text-align: justify;
-    
-}
-
-.bio {
-    border: 1.5px solid black;
-    padding: 5px;
-    width: 25%;
+body {
+    background-color: #9CAFAA;
 }
 
 .bio-name {
     font-weight: 700;
+}
+
+#bios {
+    display: inline-flex;
+}
+
+.bio {
+    padding: 5px;
+    width: 25%;
+    margin:10px;
+    background-color: #EFBC9B;
+    border-radius: 20px;
+}
+
+.about-team {
+    text-align: justify;
 }
 
