@@ -1,9 +1,10 @@
 #team, #vision {
     text-align: center;
+    color: white;
 }
 
 body {
-    background-color: #9CAFAA;
+    background-color: #9A3B3B;
 }
 
 .bio-name {
@@ -15,10 +16,11 @@ body {
 }
 
 .bio {
+    color: black;
     padding: 5px;
     width: 25%;
     margin:10px;
-    background-color: #EFBC9B;
+    background-color: #F5F5DC;
     border-radius: 20px;
 }
 
