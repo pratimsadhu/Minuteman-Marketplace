@@ -12,7 +12,8 @@ body {
 }
 
 #bios {
-    display: inline-flex;
+    display: flex;
+    flex-direction: horizontal;
 }
 
 .bio {
