@@ -28,3 +28,13 @@ body {
     text-align: justify;
 }
 
+img {
+    height: 250px;
+    border-radius: 20px;
+}
+
+.bio-title {
+    display: flex;
+    flex-direction: column;
+}
+
