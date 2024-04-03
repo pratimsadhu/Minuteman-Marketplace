@@ -45,16 +45,15 @@
         }
     ],
     "scripts": {
-        "start": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
         "prettier": "prettier src -write",
-        "validate-html": "html-validate 'src/**/*.html'",
+        "validate": "html-validate 'src/**/*.html'",
         "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
         "dev": "",
         "test": ""
     },
     "dependencies": {
         "archiver": "^6.0.1",
+        "html-validate": "^8.18.1",
         "http-server": "^14.1.1"
-    },
-    "devDependencies": {}
+    }
 }
