@@ -8,22 +8,33 @@
             <link rel="stylesheet" type="text/css" href="../CSS/goods.css" />
         </head>
         <body>
-            <div class="container">
-                <div class="header">
-                    <h1>Goods</h1>
+            <div class="navbar">
+                <a href="home.html" class="logo">Minutemen Market</a>
+                <ul class="nav-links">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="buttons">
+                <button id="goods" class="active">Goods</button>
+                <button id="services">Services</button>
+            </div>
+            <div class="subheading">
+                <h1>Recently added Goods</h1>
+                <div class="search-container">
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search for goods"
+                    />
+                    <button id="searchButton">Search</button>
                 </div>
-                <div class="content">
-                    <div class="goods">
-                        <div class="goods-item">
-                            <img src="../Images/goods1.jpg" alt="goods1" />
-                            <h2>Goods 1</h2>
-                            <p>Price: $100</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer">
-                    <p>Footer</p>
-                </div>
+            </div>
+            <div class="goods"></div>
+            <div class="filters">
+                <div>Category</div>
+                <div>Price Range</div>
+                <div>Rating</div>
             </div>
         </body>
     </html>
