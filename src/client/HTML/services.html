@@ -1,30 +1,79 @@
-<!doctype html>
-<html lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <html>
-        <head>
-            <title>Services</title>
-            <link rel="stylesheet" type="text/css" href="../CSS/services.css" />
-        </head>
-        <body>
-            <div class="container">
-                <div class="header">
-                    <h1>Goods</h1>
+    <!doctype html>
+    <html lang="en">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8" />
+        <html>
+            <head>
+                <title>Services</title>
+                <!-- Import the Newsreader font from Google Fonts -->
+                <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+                <link rel="stylesheet" type="text/css" href="../CSS/services.css" />
+            </head>
+            <body>
+                <!-- Navigation Bar -->
+                <div class="navbar">
+                    <div class="logo">Minutemen Market</div>
+                    <ul class="nav-links">
+                        <li><a href="login.html">Login</a></li> <!-- Link to the login page -->
+                        <li><a href="contact.html">Contact Us</a></li> <!-- Link to the contact page -->
+                    </ul>
                 </div>
-                <div class="content">
-                    <div class="goods">
-                        <div class="goods-item">
-                            <img src="../Images/goods1.jpg" alt="goods1" />
-                            <h2>Goods 1</h2>
-                            <p>Price: $100</p>
-                        </div>
+                <div class="buttons">
+                    <div class="button-group"> <!-- Wrap the buttons in a div for centering -->
+                        <a href="goods.html"><button id="goods">Goods</button></a> <!-- Link to goods.html -->
+                        <button id="services" class="active">Services</button>
                     </div>
                 </div>
-                <div class="footer">
-                    <p>Footer</p>
+                <div class="entrytext">
+                    <h1>Book Local Services...</h1>
                 </div>
-            </div>
-        </body>
+                <div class="search-section">
+                    <form> <!-- The search form -->
+                        <input type="text" placeholder="Search..." class="search-bar" /> <!-- Search bar -->
+                        <select class="service-type"> <!-- Dropdown to choose service type -->
+                            <option value="">Select Service Type...</option>
+                            <option value="barbershop">Barbershop</option>
+                            <option value="photography">Photography</option>
+                            <option value="catering">Catering</option>
+                            <!-- Add more service types as needed -->
+                        </select>
+                        <select class="sort-type"> <!-- Dropdown to choose service type -->
+                            <option value="">Sort By...</option>
+                            <option value="averageratings">Average Ratings</option>
+                            <!-- Add more service types as needed -->
+                        </select>
+                        <button type="submit" class="search-button">Search</button> <!-- Search button -->
+                    </form>
+                </div>
+                <div class="container">
+                    <div class="header">
+                        <h3>Popular Services</h3>
+                    </div>
+                    <div class="services-container">
+                        <div class="service-card">
+                            <img src="../Images/Service1.png" alt="Service 1" /> <!-- Service photo -->
+                            <hr />
+                            <div class="companyname">Craig's Barbershop</div>
+                            <div class="rating">Rating: 4.5/5 ★ (587)</div> <!-- Optional rating -->
+                        </div>
+
+                        <div class="service-card">
+                            <img src="../Images/photography.jpg" alt="Service 2" />
+                            <hr />
+                            <div class="companyname">Josh Bell Photography</div>
+                            <div class="rating">Rating: 4.92/5 ★ (53)</div> <!-- Optional rating -->
+                        </div>
+
+                        <div class="service-card">
+                            <img src="../Images/gym.jpg" alt="Service 3" />
+                            <hr />
+                            <div class="companyname">CampusEdge Personal Training</div>
+                            <div class="rating">Rating: 4.21/5 ★ (23)</div> <!-- Optional rating -->
+                        </div>
+                        <!-- Add more cards as needed -->
+                    </div>
+
+                </div>
+            </body>
+        </html>
     </html>
-</html>
