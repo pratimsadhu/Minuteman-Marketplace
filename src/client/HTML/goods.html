@@ -1,41 +1,57 @@
 <!doctype html>
 <html lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <html>
-        <head>
-            <title>Goods</title>
-            <link rel="stylesheet" type="text/css" href="../CSS/goods.css" />
-        </head>
-        <body>
-            <div class="navbar">
-                <a href="home.html" class="logo">Minutemen Market</a>
-                <ul class="nav-links">
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Goods</title>
+        <link rel="stylesheet" href="../CSS/goods.css" />
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="home.html" class="logo">Minutemen Market</a>
+            <ul class="nav-links">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button id="goods" class="active">Goods</button>
+            <button id="services">Services</button>
+        </div>
+        <div class="subheading">
+            <h1>Recently added Goods</h1>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search for goods" />
+                <button id="searchButton">Search</button>
             </div>
-            <div class="buttons">
-                <button id="goods" class="active">Goods</button>
-                <button id="services">Services</button>
-            </div>
-            <div class="subheading">
-                <h1>Recently added Goods</h1>
-                <div class="search-container">
-                    <input
-                        type="text"
-                        id="search"
-                        placeholder="Search for goods"
+        </div>
+        <div class="goods">
+            <div class="goods">
+                <div class="card">
+                    <img
+                        src=""
+                        alt="Product Image"
+                        class="card-img"
                     />
-                    <button id="searchButton">Search</button>
+                    <div class="card-body">
+                        <h5 class="card-title">Product Name</h5>
+                        <p class="card-text">
+                            Short description of the product goes here. Ideal
+                            for catching a customer's eye with key details.
+                        </p>
+                        <div class="card-footer">
+                            <span class="price">$29.99</span>
+                            <button class="buy-button">Buy Now</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="goods"></div>
-            <div class="filters">
-                <div>Category</div>
-                <div>Price Range</div>
-                <div>Rating</div>
-            </div>
-        </body>
-    </html>
+        </div>
+        <div class="filters">
+            <div class="filter-label">Filters</div>
+            <div>Category</div>
+            <div>Price Range</div>
+            <div>Rating</div>
+        </div>
+    </body>
 </html>

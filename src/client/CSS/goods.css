@@ -1,35 +1,41 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
 .navbar {
     border-bottom: 1px solid #e9ecef;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
 }
 
-.navbar .logo {
+.logo {
     font-family: 'Lobster', cursive;
     font-size: 2.5rem;
+    color: #971b2f;
     text-decoration: none;
-    color: #971B2F;
 }
 
-.navbar .nav-links {
+.nav-links {
     list-style: none;
     display: flex;
+    gap: 25px;
     margin: 0;
     padding: 0;
-    gap: 25px;
 }
 
-.navbar .nav-links a {
+.nav-links a {
     text-decoration: none;
     color: black;
     font-size: 1.2rem;
 }
-.navbar .nav-links a:hover {
+
+.nav-links a:hover {
     color: #883202;
 }
 
@@ -37,39 +43,38 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin: 20px; 
+    padding: 20px;
 }
 
 .buttons button {
-    background-color: #fff; 
-    color: #881c1c; 
-    border: 2px solid #881c1c; 
+    background-color: #fff;
+    color: #881c1c;
+    border: 2px solid #881c1c;
     padding: 10px 20px;
     font-size: 16px;
-    font-weight: bold; 
-    text-transform: uppercase; 
-    border-radius: 5px; 
-    transition: background-color 0.3s; 
-    cursor: pointer; 
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .buttons button:hover {
-    background-color: #881c1c; 
-    color: white; 
+    background-color: #881c1c;
+    color: white;
 }
 
 #goods.active {
     background-color: #881c1c;
     color: white;
-    cursor: default;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.subheading, .filters, .goods {
+.subheading, .goods {
     margin: 20px;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
 }
 
@@ -79,7 +84,7 @@
     align-items: center;
 }
 
-.subheading h1 {
+h1 {
     color: #333;
     font-size: 24px;
     margin: 0;
@@ -99,10 +104,10 @@
 
 #searchButton {
     padding: 10px 20px;
+    background-color: #5c67f2;
+    color: white;
     border: none;
     border-radius: 4px;
-    background-color: #5C67F2;
-    color: white;
     cursor: pointer;
     font-size: 16px;
     margin-left: 10px;
@@ -120,11 +125,13 @@
 
 .filters {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     background-color: #e8e8e8;
     border-radius: 8px;
     text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
 }
 
 .filters div {
@@ -133,4 +140,80 @@
     border-radius: 4px;
     font-size: 16px;
     color: #333;
+}
+
+.filter-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background-color: #e8e8e8;
+    padding: 10px;
+    border-radius: 4px;
+    grid-column: span 3;
+}
+
+
+.card {
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #666;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+}
+
+.price {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.buy-button {
+    background-color: #4a54e1;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+    background-color: #393fbf;
 }
