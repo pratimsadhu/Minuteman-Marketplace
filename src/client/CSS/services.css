@@ -3,38 +3,37 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Inter', sans-serif; /* Use a common font for the rest of the document */
+    font-family: 'Inter', sans-serif; 
 
 } 
 
 
 .navbar {
-    background-color: #f1ffff; /* Light gray background for the navbar */
+    background-color: #f1ffff;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ccc; /*Optional border for separation */
+    border-bottom: 1px solid #ccc;
 }
 .navbar .logo {
     font-family: 'Newsreader', serif;
-    color: #883202; /* Crimson red color for the logo */
+    color: #883202;
     font-size: 28px;
-    /* font-weight: bold; Bold text for the logo */
 }
 .navbar .nav-links {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 20px; /* Spacing between links */
+    gap: 20px; 
 }
 .navbar .nav-links a {
-    text-decoration: none; /* No underline for links */
-    color:#552901;; /* Default text color */
+    text-decoration: none; 
+    color:#552901;; 
 }
 .navbar .nav-links a:hover {
-    color: #880402c1; /* Change color on hover */
+    color: #880402c1; 
 }
 
 .header {
@@ -59,18 +58,14 @@ h1 {
 }
 
 .search-section {
-    /* display: flex; */
-    /* justify-content: center; Center the search bar */
-    /* align-items: center; */
-    /* padding: 20px; Padding around the section */
     display: flex;
-    justify-content: center; /* Center the search bar */
+    justify-content: center; 
     align-items: center;
     padding: 20px; /* Padding around the section */
     background-color: #f9f9f9; /* Light background color for contrast */
     border-radius: 50px; /* Large border radius for oval/circular shape */
     border: 2px solid #552901; /* Border with a specific color */
-    width: 44.69%; /* Adjust width to fit content */
+    width: 44.69%;
     height: 1px;
     margin: 0 auto; /* Center the section horizontally */
 }
@@ -78,7 +73,7 @@ h1 {
 .search-bar {
     border: 2px solid white; /* Border for the input field */
     padding: 10px;
-    font-size: 16px; /* Adjust font size for consistency */
+    font-size: 16px; 
     font-family: 'Newsreader', 'serif';
 }
 
@@ -91,7 +86,6 @@ h1 {
     border: 2px solid white; /* Border around the dropdown */
     padding: 10px; /* Padding inside the dropdown */
     font-size: 16px;
-    /* margin-left: 10px; Space between text box and dropdown */
     font-family: 'Newsreader', 'serif';
 }
 
@@ -99,16 +93,14 @@ h1 {
     border: 2px solid white; /* Border around the dropdown */
     padding: 10px; /* Padding inside the dropdown */
     font-size: 16px;
-    /* margin-left: 10px; Space between text box and dropdown */
     font-family: 'Newsreader', 'serif';
 }
 .search-button {
     border: none; /* No border */
-    background-color: #552901; /* Dark brown background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding for the button */
-    /* margin-left: 10px; Space between dropdown and button */
-    cursor: pointer; /* Change cursor on hover */
+    background-color: #552901;
+    color: white;
+    padding: 10px 20px; 
+    cursor: pointer; 
     border-radius: 5px; /* Rounded corners */
 
 }
@@ -128,9 +120,8 @@ h1 {
     padding: 10px;
     border-radius: 8px; /* Rounded corners */
     background-color: #fff; /* White background */
-    width: 300px; /* Set card width */
+    width: 300px; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow for a card-like effect */
-    /* text-align: center; Center the text */
     margin: 10px; /* Spacing between cards */
 }
 
@@ -142,31 +133,27 @@ h1 {
 }
 
 .service-card .companyname {
-    font-size: 16px; /* Adjust font size */
-    /* padding: 10px; */
+    font-size: 16px;
     font-weight: bold;
     font-size: large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: black; /* Dark brown text color */
+    color: black;
 }
 .service-card hr {
     border: none; /* Remove default borders */
-    border-top: 3px solid #552901; /* A thick 6px line with a specific color */
-    /* margin: 10px 0; Spacing for the line */
+    border-top: 3px solid #552901;
 }
 
 .service-card .rating {
     font-size: 14px;
-    /* padding: 10px; */
     color: #883202; /* Rating text color */
-    /* text-align: left; */
 }
 
 .services-container {
     display: flex;
     flex-wrap: wrap; /* Allow cards to wrap if there's not enough space */
     justify-content: center; /* Center the cards */
-    padding: 20px; /* Padding around the container */
+    padding: 20px;
 }
 
 .services {
@@ -183,34 +170,33 @@ h1 {
 
 .buttons {
     display: flex;
-    justify-content: center; /* Center the buttons horizontally */
-    align-items: center; /* Center the buttons vertically */
-    margin: 20px 0; /* Add some spacing */
+    justify-content: center; 
+    align-items: center;
+    margin: 20px 0;
 }
 
 .button-group {
     display: flex;
-    gap: 10px; /* Spacing between the buttons */
+    gap: 10px;
 }
 
 #goods,
 #services {
-    border: none; /* No border */
-    /* background-color: #552901; Dark brown background */
-    color: #552901; /* White text */
-    padding: 10px 20px; /* Padding for the button */
-    cursor: pointer; /* Change cursor on hover */
-    border-radius: 5px; /* Rounded corners */
+    border: none; 
+    color: #552901;
+    padding: 10px 20px;
+    cursor: pointer; 
+    border-radius: 5px;
     font-size: 24px;
     font-family: 'Newsreader', 'serif';
 }
 
 #services.active {
-    background-color: #552901; /* Highlight active button */
+    background-color: #552901;
 }
 
 #goods:hover,
 #services:hover {
-    background-color: #883202; /* Change color on hover */
+    background-color: #883202;
     color: white;
 }
