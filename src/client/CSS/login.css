@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #f1ffff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+.navbar .logo {
+    font-family: 'Newsreader', serif;
+    color: #883202;
+    font-size: 28px;
+}
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px; 
+}
+.navbar .nav-links a {
+    text-decoration: none; 
+    color:#552901;; 
+}
+.navbar .nav-links a:hover {
+    color: #880402c1; 
+}
+
+/* Add additional styles for your login form */

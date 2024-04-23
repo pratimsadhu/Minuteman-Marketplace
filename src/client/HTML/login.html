@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Minutemen Marketplace</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS/login.css">
+</head>
+<body class="bg-white">
+<!-- Navigation Bar -->
+<nav class="bg-white p-4">
+    <div class="navbar">
+        <a href="home.html" class="logo">Minutemen Market</a>
+        <ul class="nav-links">
+            <li><a href="login.html">Login</a></li> <!-- Link to the login page -->
+            <li><a href="contact.html">Contact Us</a></li> <!-- Link to the contact page -->
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mx-auto mt-8">
+    <h1 class="text-4xl text-center font text-blue-800 font-arial">Login to Minutemen Marketplace</h1>
+    <div class="mt-12"></div>
+    <!-- Login Form -->
+    <form class="mx-auto max-w-sm">
+        <div class="mb-4">
+            <label for="username" class="block text-gray-700 font-bold mb-2">Username</label>
+            <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-6">
+            <label for="password" class="block text-gray-700 font-bold mb-2">Password</label>
+            <input type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign In</button>
+            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">Forgot Password?</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
