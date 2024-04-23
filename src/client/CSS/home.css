@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../Images/UMassCampus2.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .navbar {
     background-color: #f1ffff;
@@ -21,7 +28,9 @@
 }
 .navbar .nav-links a {
     text-decoration: none; 
-    color:#552901;; 
+    color:#552901;
+    font-family: 'Newsreader', 'serif';
+    font-size: large;
 }
 .navbar .nav-links a:hover {
     color: #880402c1; 

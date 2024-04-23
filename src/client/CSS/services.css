@@ -4,8 +4,8 @@
 
 body {
     font-family: 'Inter', sans-serif; 
+    background-color: #FFFFF0;
 } 
-
 
 .navbar {
     background-color: #f1ffff;
@@ -181,7 +181,7 @@ h1 {
 }
 
 #goods {
-    background-color: #ffffff;
+    background-color: #FFFFF0;
 }
 
 #goods,

@@ -4,6 +4,7 @@
 
 body {
     font-family: 'Inter', sans-serif; 
+    background-color: #FFFFF0;
 } 
 
 
@@ -104,7 +105,6 @@ h1 {
     padding: 10px 20px; 
     cursor: pointer; 
     border-radius: 5px;
-
 }
 
 .search-button:hover {
@@ -185,7 +185,7 @@ h1 {
 }
 
 #services {
-    background-color: #ffffff;
+    background-color: #FFFFF0;
 }
 
 #products,
