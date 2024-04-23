@@ -1,59 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minutemen Marketplace</title>
-  <!-- Include Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../CSS/home.css" />
-  <style>
-    .font-times {
-      font-family: "New Century Schoolbook", TeX Gyre Schola, serif;
-    }
-    .font-arial {
-      font-family: 'Lato', sans-serif;
-    }
-    .empowering-text {
-      font-style: italic;
-      position: relative;
-      display: inline-block;
-      text-align: center; /* Center the text */
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="bg-white">
-    <div class="navbar flex justify-between items-center">
-      <div class="logo">Minutemen Market</div>
-      <ul class="nav-links flex">
-        <li><a href="login.html">Login</a></li> <!-- Link to the login page -->
-        <li><a href="contact.html">Contact Us</a></li> <!-- Link to the contact page -->
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="container mx-auto mt-8">
-    <div class="button-group"> 
-      <a href="goods.html"><button id="goods" class="active">Products</button></a> <!-- Link to goods.html -->
-      <a href="services.html"><button id="services" class="active">Services</button></a> <!-- Link to services.html -->
-    </div>
-    <p id="empowering-text" class="text-6xl text-center mt-4 font text-black-800 leading-relaxed underline font-times empowering-text"></p>
-    <!-- Adding space here -->
-    <div class="mt-12"></div>
-    <!-- End of added space -->
-    <!-- Hide this initially and then show after typing animation -->
-    <h1 class="text-4xl font text-center opacity-0 transition-opacity text-blue-800 duration-1000 delay-400 font-arial">
-      Welcome to Minutemen Marketplace!
-    </h1>
-    <!-- Adding space here -->
-    <div class="mt-12"></div>
-    <!-- End of added space -->
-=======
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -119,37 +65,37 @@
         <a href="services.html"><button id="services" class="active">Services</button></a> <!-- Link to services.html -->
       </div>
     </div>
->>>>>>> Stashed changes
   </div>
 
-  <script>
-    // Typing animation for empowering text
-    const empoweringText = document.getElementById("empowering-text");
-    const text = "Empowering UMass students one minute at a time";
-    let index = 0;
+    <script>
+      // Typing animation for empowering text
+      const empoweringText = document.getElementById("empowering-text");
+      const text = "Empowering UMass students one minute at a time";
+      let index = 0;
 
-    function typeText() {
-      if (index < text.length) {
-        empoweringText.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeText, 30); // Adjust the delay here (in milliseconds)
+      function typeText() {
+        if (index < text.length) {
+          empoweringText.innerHTML += text.charAt(index);
+          index++;
+          setTimeout(typeText, 30); // Adjust the delay here (in milliseconds)
+        }
       }
-    }
 
-    // Start typing animation
-    typeText();
+      // Start typing animation
+      typeText();
 
-    // After typing animation is completed, show the hidden elements
-    document.addEventListener("DOMContentLoaded", function () {
-      const welcomeHeader = document.querySelector(".text-4xl");
-      const links = document.querySelector(".button-group");
+      // After typing animation is completed, show the hidden elements
+      document.addEventListener("DOMContentLoaded", function () {
+        const welcomeHeader = document.querySelector(".text-4xl");
+        const links = document.querySelector(".button-group");
+        console.log(links);
 
-      // Wait for typing animation to complete before showing hidden elements
-      setTimeout(function () {
-        welcomeHeader.classList.remove("opacity-0");
-        links.style.opacity = 1;
-      }, text.length * 30 + 400); // Adjust the delay accordingly
-    });
-  </script>
-</body>
+        // Wait for typing animation to complete before showing hidden elements
+        setTimeout(function () {
+          welcomeHeader.classList.remove("opacity-0");
+          links.style.opacity=1;
+        }, text.length * 30 + 400); // Adjust the delay accordingly
+      });
+    </script>
+  </body>
 </html>
