@@ -4,7 +4,6 @@
 
 body {
     font-family: 'Inter', sans-serif; 
-
 } 
 
 
@@ -20,6 +19,7 @@ body {
     font-family: 'Newsreader', serif;
     color: #883202;
     font-size: 28px;
+    text-decoration: none;
 }
 .navbar .nav-links {
     list-style: none;
@@ -168,16 +168,14 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.buttons {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin: 20px 0;
-}
+
 
 .button-group {
     display: flex;
     gap: 10px;
+    justify-content: center; 
+    align-items: center;
+    margin: 20px 0;
 }
 
 #goods,
