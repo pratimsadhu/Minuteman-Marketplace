@@ -32,7 +32,7 @@
     justify-content: center; 
     align-items: center;
     margin: 20px 0;
-    opacity:0;
+    /* opacity:0; */
 }
 #goods,
 #services {
