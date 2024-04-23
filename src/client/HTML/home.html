@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minutemen Marketplace</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS/services.css" />
+    <style>
+      .font-times {
+        font-family: "New Century Schoolbook", TeX Gyre Schola, serif;
+      }
+      .font-arial{
+        font-family: 'Lato', sans-serif;
+      }
+      .empowering-text {
+        font-style: italic;
+        position: relative;
+        display: inline-block;
+        text-align: center; /* Center the text */
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Navigation Bar -->
+    <nav class="bg-white p-4">
+        <body>
+            <div class="navbar">
+                <div class="logo">Minutemen Market</div>
+                <ul class="nav-links">
+                    <li><a href="login.html">Login</a></li> <!-- Link to the login page -->
+                    <li><a href="contact.html">Contact Us</a></li> <!-- Link to the contact page -->
+                </ul>
+            </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8">
+      <p
+        id="empowering-text"
+        class="text-6xl text-center mt-4 font text-black-800 leading-relaxed underline font-times empowering-text"
+        style="margin-left: calc(20vh - 20px);margin-right: calc(20vh - 20px);"
+      ></p>
+      <!-- Adding space here -->
+      <div class="mt-12"></div>
+      <!-- End of added space -->
+      <!-- Hide this initially and then show after typing animation -->
+      <h1
+        class="text-4xl font text-center opacity-0 transition-opacity text-blue-800 duration-1000 delay-400 font-arial"
+      >
+        Welcome to Minutemen Marketplace!
+      </h1>
+      <!-- Adding space here -->
+      <div class="mt-12"></div>
+      <!-- End of added space -->
+      <div
+        id="buttonsContainer"
+        class="flex justify-center mt-8 opacity-0 transition-opacity delay-400"
+      >
+        <a
+          href="goods.html"
+          class="bg-red-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4 font-arial"
+          >Goods</a
+        >
+        <a
+          href="services.html"
+          class="bg-red-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded font-arial"
+          >Services</a
+        >
+      </div>
+    </div>
+
+    <script>
+      // Typing animation for empowering text
+      const empoweringText = document.getElementById("empowering-text");
+      const text = "Empowering UMass students one minute at a time";
+      let index = 0;
+
+      function typeText() {
+        if (index < text.length) {
+          empoweringText.innerHTML += text.charAt(index);
+          index++;
+          setTimeout(typeText, 30); // Adjust the delay here (in milliseconds)
+        }
+      }
+
+      // Start typing animation
+      typeText();
+
+      // After typing animation is completed, show the hidden elements
+      document.addEventListener("DOMContentLoaded", function () {
+        const welcomeHeader = document.querySelector(".text-4xl");
+        const links = document.getElementById("buttonsContainer");
+
+        // Wait for typing animation to complete before showing hidden elements
+        setTimeout(function () {
+          welcomeHeader.classList.remove("opacity-0");
+          links.classList.remove("opacity-0");
+        }, text.length * 30 + 400); // Adjust the delay accordingly
+      });
+    </script>
+  </body>
+</html>
