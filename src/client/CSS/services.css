@@ -30,7 +30,9 @@ body {
 }
 .navbar .nav-links a {
     text-decoration: none; 
-    color:#552901;; 
+    color:#552901;
+    font-family: 'Newsreader', 'serif';
+    font-size: large;
 }
 .navbar .nav-links a:hover {
     color: #880402c1; 
