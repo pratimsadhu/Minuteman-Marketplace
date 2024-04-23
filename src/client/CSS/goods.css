@@ -59,13 +59,13 @@ h1 {
 
 .search-section {
     display: flex;
-    justify-content: center; 
+    justify-content: space-evenly; 
     align-items: center;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 50px; /* Large border radius for oval/circular shape */
     border: 2px solid #552901;
-    width: 44.69%;
+    width: 30.69%;
     height: 1px;
     margin: 0 auto; /* Center the section horizontally */
 }
@@ -127,12 +127,12 @@ h1 {
 
 .product-card img {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover; /* Ensure image fills the space without distortion */
     border-radius: 8px 8px 0 0; /* Rounded top corners */
 }
 
-.product-card .companyname {
+.product-card .productname {
     font-size: 16px;
     font-weight: bold;
     font-size: large;
@@ -144,9 +144,15 @@ h1 {
     border-top: 3px solid #552901;
 }
 
-.product-card .rating {
-    font-size: 14px;
+.product-card .price {
+    font-size: 16px;
     color: #883202;
+}
+
+.product-card .desc-container{
+    justify-content: space-between;
+    /* align-items: center; */
+    display: flex;
 }
 
 .products-container {
@@ -174,6 +180,10 @@ h1 {
     justify-content: center; 
     align-items: center;
     margin: 20px 0;
+}
+
+#services {
+    background-color: #ffffff;
 }
 
 #products,
