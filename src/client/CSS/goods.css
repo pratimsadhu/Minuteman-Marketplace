@@ -4,7 +4,6 @@
 
 body {
     font-family: 'Inter', sans-serif; 
-
 } 
 
 
@@ -20,6 +19,7 @@ body {
     font-family: 'Newsreader', serif;
     color: #883202;
     font-size: 28px;
+    text-decoration: none;
 }
 .navbar .nav-links {
     list-style: none;
