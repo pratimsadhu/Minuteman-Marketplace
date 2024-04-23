@@ -1,51 +1,87 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Goods</title>
-        <link rel="stylesheet" href="../CSS/goods.css" />
-    </head>
-    <body>
-        <div class="navbar">
-            <a href="home.html" class="logo">Minutemen Market</a>
-            <ul class="nav-links">
-                <li><a href="login.html">Login</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="buttons">
-            <button id="goods" class="active">Goods</button>
-            <a href="services.html"><button id="services">Services</button></a>
-        </div>
-        <div class="subheading">
-            <h1>Recently added Goods</h1>
-            <div class="search-container">
-                <input type="text" id="search" placeholder="Search for goods" />
-                <button id="searchButton">Search</button>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <html>
+        <head>
+            <title>Products</title>
+            <!-- Importing the Newsreader and Inter font from Google Fonts -->
+            <link
+                href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Inter:wght@400;700&display=swap"
+                rel="stylesheet"
+            />
+            <link rel="stylesheet" type="text/css" href="../CSS/goods.css" />
+        </head>
+        <body>
+            <div class="navbar">
+                <div class="logo">Minutemen Market</div>
+                <ul class="nav-links">
+                    <li><a href="login.html">Login</a></li>
+                    <!-- Link to the login page -->
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <!-- Link to the contact page -->
+                </ul>
             </div>
-        </div>
-        <div class="goods">
-            <div class="card">
-                <img src="" alt="Product Image" class="card-img" />
-                <div class="card-body">
-                    <h5 class="card-title">Product Name</h5>
-                    <p class="card-text">
-                        Short description of the product goes here. Ideal for
-                        catching a customer's eye with key details.
-                    </p>
-                    <div class="card-footer">
-                        <span class="price">$29.99</span>
-                        <button class="buy-button">Buy Now</button>
+            <div class="buttons">
+                <div class="button-group">
+                    <button id="products" class="active">Products</button>
+                    <a href="services.html"
+                        ><button id="services">Services</button></a
+                    ><!-- Link to services.html -->
+                </div>
+            </div>
+            <div class="entrytext">
+                <h1>See Local Products...</h1>
+            </div>
+            <div class="search-section">
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Search Products..."
+                        class="search-bar"
+                    />
+                    <select class="product-type">
+                        <option value="">Select Product Type...</option>
+                        <option value="barbershop">Barbershop</option>
+                        <option value="photography">Photography</option>
+                        <option value="catering">Catering</option>
+                    </select>
+                    <select class="sort-type">
+                        <option value="">Sort By...</option>
+                        <option value="averageratings">Average Ratings</option>
+                    </select>
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            <div class="container">
+                <div class="header">
+                    <h3>Popular Products</h3>
+                </div>
+                <div class="products-container">
+                    <div class="product-card">
+                        <img src="../Images/Service1.png" alt="Service 1" />
+                        <hr />
+                        <div class="companyname">Craig's Barbershop</div>
+                        <div class="rating">Rating: 4.5/5 ★ (587)</div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="../Images/photography.jpg" alt="Service 2" />
+                        <hr />
+                        <div class="companyname">Josh Bell Photography</div>
+                        <div class="rating">Rating: 4.92/5 ★ (53)</div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="../Images/gym.jpg" alt="Service 3" />
+                        <hr />
+                        <div class="companyname">
+                            CampusEdge Personal Training
+                        </div>
+                        <div class="rating">Rating: 4.21/5 ★ (23)</div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="filters">
-            <div class="filter-label">Filters</div>
-            <div>Category</div>
-            <div>Price Range</div>
-            <div>Rating</div>
-        </div>
-    </body>
+        </body>
+    </html>
 </html>
