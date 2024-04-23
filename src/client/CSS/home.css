@@ -68,3 +68,12 @@ body {
     background-color: #883202;
     color: white;
 }
+#empowering-text {
+    margin-left: calc(20vh - 20px);
+    margin-right: calc(20vh - 20px);
+}
+.text-4xl {
+    color: #000000;
+    font-family: 'Newsreader', serif;
+}
+  
