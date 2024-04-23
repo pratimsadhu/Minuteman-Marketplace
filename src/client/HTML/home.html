@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../CSS/services.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/home.css" />
     <style>
       .font-times {
         font-family: "New Century Schoolbook", TeX Gyre Schola, serif;
@@ -59,20 +59,11 @@
       <!-- Adding space here -->
       <div class="mt-12"></div>
       <!-- End of added space -->
-      <div
-        id="buttonsContainer"
-        class="flex justify-center mt-8 opacity-0 transition-opacity delay-400"
-      >
-        <a
-          href="goods.html"
-          class="bg-red-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4 font-arial"
-          >Goods</a
-        >
-        <a
-          href="services.html"
-          class="bg-red-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded font-arial"
-          >Services</a
-        >
+      <div class="button-group"> 
+        <a href="goods.html"><button id="goods" class="active">Products</button></a> <!-- Link to goods.html -->
+        <a href="services.html"><button id="services" class="active">Services</button></a> <!-- Link to services.html -->
+        
+    </div>
       </div>
     </div>
 
@@ -96,12 +87,13 @@
       // After typing animation is completed, show the hidden elements
       document.addEventListener("DOMContentLoaded", function () {
         const welcomeHeader = document.querySelector(".text-4xl");
-        const links = document.getElementById("buttonsContainer");
+        const links = document.querySelector(".button-group");
+        console.log(links);
 
         // Wait for typing animation to complete before showing hidden elements
         setTimeout(function () {
           welcomeHeader.classList.remove("opacity-0");
-          links.classList.remove("opacity-0");
+          links.style.opacity=1;
         }, text.length * 30 + 400); // Adjust the delay accordingly
       });
     </script>

@@ -26,3 +26,36 @@
 .navbar .nav-links a:hover {
     color: #880402c1; 
 }
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center; 
+    align-items: center;
+    margin: 20px 0;
+    opacity:0;
+}
+#goods,
+#services {
+    border: none; 
+    color: #552901;
+    padding: 10px 20px;
+    cursor: pointer; 
+    border-radius: 5px;
+    font-size: 24px;
+    font-family: 'Newsreader', 'serif';
+}
+
+#services.active {
+    background-color: #552901;
+    color: white;
+}
+#goods.active {
+    background-color: #552901;
+    color: white;
+}
+
+#goods:hover,
+#services:hover {
+    background-color: #883202;
+    color: white;
+}
