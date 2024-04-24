@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Minutemen Marketplace</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../CSS/styles.css" />
+
     </head>
     <body>
         <div class="navbar">
@@ -24,14 +26,19 @@
         <!-- Home Section -->
         <div id="home" class="content active">
             <div class="centered-container">
-                <h1 class="welcome-title">Welcome to Minutemen Marketplace!</h1>
-                <p id="empowering-text" class="empowering-text">
-                    Empowering UMass students one minute at a time
-                </p>
                 <div class="button-group">
                     <button onclick="navigate('products')">Products</button>
                     <button onclick="navigate('services')">Services</button>
                 </div>
+                <p class="text-6xl text-center mt-4 font text-black-800 leading-relaxed underline font-times empowering-text" id="empowering-text"></p>
+                <!-- Adding space here -->
+                <div class="mt-12"></div>
+                <!-- End of added space -->
+                <!-- Hide this initially and then show after typing animation -->
+                <h1 class="text-4xl text-center opacity-0 transition-opacity duration-1000 delay-400">Welcome to Minutemen Marketplace!</h1>
+                <!-- Adding space here -->
+                <div class="mt-12"></div>
+                <!-- End of added space -->
             </div>
         </div>
 
