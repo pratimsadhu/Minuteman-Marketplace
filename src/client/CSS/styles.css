@@ -1,0 +1,293 @@
+body {
+    background-color: #FFFFF0;
+    color: #333; 
+}
+
+.welcome-title, .entrytext h1 {
+    color: #552901;
+    margin: 20px 0;
+}
+
+.empowering-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 32px; 
+}
+
+/* Styling for the navigation bar */
+.navbar {
+    background-color: #f1ffff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Logo styling within the navbar */
+.navbar .logo {
+    font-family: "Lobster", cursive;
+    color: #883202;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+/* Styling for navigation links */
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #552901;
+    font-family: 'Newsreader', serif;
+    font-size: large;
+}
+
+.navbar .nav-links a:hover {
+    color: #880402c1;
+}
+
+/* Header styling */
+.header {
+    justify-content: space-between;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-family: 'Newsreader', serif;
+    font-size: 24px;
+    color: #552901;
+}
+
+/* Entry text styling */
+.entrytext {
+    font-size: 40px;
+    font-family: 'Newsreader', serif;
+    color: #552901;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+/* Search section styling */
+.search-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 50px;
+    border: 2px solid #552901;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.search-bar, .sort-type, .service-type {
+    border: 2px solid white;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Newsreader', serif;
+}
+
+.search-button {
+    border: none;
+    background-color: #552901;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-button:hover {
+    background-color: #883202;
+}
+
+/* Product and service card styling */
+.product-card, .service-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+.product-card img, .service-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.product-card .productname, .service-card .companyname {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    color: black;
+}
+
+.product-card .price, .service-card .rating {
+    font-size: 16px;
+    color: #883202;
+}
+
+.product-card hr, .service-card hr {
+    border-top: 3px solid #552901;
+}
+
+.products-container, .services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.button-group button {
+    border: none;
+    color: #552901;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    font-family: 'Newsreader', serif;
+}
+
+.button-group button:hover, #products.active, #services.active {
+    background-color: #552901;
+    color: white;
+}
+
+/* Login and Signup container styling */
+.login-container, .signup-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Headings within Login and Signup */
+.login-container h1, .signup-container h1 {
+    color: #552901;
+    font-family: 'Newsreader', serif;
+    text-align: center;
+}
+
+/* Form styling */
+#loginForm, #signupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Labels within forms */
+label {
+    font-family: 'Newsreader', serif;
+    color: #552901;
+}
+
+/* Input fields styling */
+input[type="text"], input[type="password"] {
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Buttons within forms */
+.form-button {
+    padding: 10px;
+    border: none;
+    background-color: #552901;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Newsreader', serif;
+}
+
+.form-button:hover {
+    background-color: #883202;
+}
+
+.switch-button {
+    padding: 10px;
+    border: none;
+    background-color: #ccc;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+}
+
+.switch-button:hover {
+    background-color: #aaa;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Contact Us Section Styles */
+#contact {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contact-container p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#contact form {
+    display: grid;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-container button {
+    padding: 10px 20px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
