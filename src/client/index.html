@@ -1,102 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minutemen Marketplace</title>
-    <!-- Include Tailwind CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./CSS/home.css" />
-    <style>
-      .font-times {
-        font-family: "New Century Schoolbook", TeX Gyre Schola, serif;
-      }
-      .font-arial{
-        font-family: 'Lato', sans-serif;
-      }
-      .empowering-text {
-        font-style: italic;
-        position: relative;
-        display: inline-block;
-        text-align: center; /* Center the text */
-      }
-    </style>
-  </head>
-  <body class="bg-white">
-    <!-- Navigation Bar -->
-    <!-- <nav class="bg-white p-4"> -->
-        <body>
-            <div class="navbar">
-                <div class="logo">Minutemen Market</div>
-                <ul class="nav-links">
-                    <li><a href="html/login.html">Login</a></li> <!-- Link to the login page -->
-                    <li><a href="html/contact.html">Contact Us</a></li> <!-- Link to the contact page -->
-                </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Minutemen Marketplace</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./styles.css" />
+
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="#" class="logo" onclick="navigate('home')"
+                >Minutemen Market</a
+            >
+            <ul class="nav-links">
+                <li><a href="#login" onclick="navigate('login')">Login</a></li>
+                <li>
+                    <a href="#contact" onclick="navigate('contact')"
+                        >Contact Us</a
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <!-- Home Section -->
+        <div id="home" class="content active">
+            <div class="centered-container">
+                <div class="button-group">
+                    <button onclick="navigate('products')">Products</button>
+                    <button onclick="navigate('services')">Services</button>
+                </div>
+                <p class="text-6xl text-center mt-4 font text-black-800 leading-relaxed underline font-times empowering-text" id="empowering-text"></p>
+                <!-- Adding space here -->
+                <div class="mt-12"></div>
+                <!-- End of added space -->
+                <!-- Hide this initially and then show after typing animation -->
+                <h1 class="text-4xl text-center opacity-0 transition-opacity duration-1000 delay-400">Welcome to Minutemen Marketplace!</h1>
+                <!-- Adding space here -->
+                <div class="mt-12"></div>
+                <!-- End of added space -->
             </div>
-      </div>
-    </nav>
+        </div>
 
-    <!-- Main Content -->
-    <div class="container mx-auto mt-8">
-      <div class="button-group"> 
-        <a href="html/goods.html"><button id="goods" class="active">Products</button></a> <!-- Link to goods.html -->
-        <a href="html/services.html"><button id="services" class="active">Services</button></a> <!-- Link to services.html -->
-      </div>
-      <p
-        id="empowering-text"
-        class="text-6xl text-center mt-4 font text-black-800 leading-relaxed underline font-times empowering-text"
-        style="margin-left: calc(20vh - 20px);margin-right: calc(20vh - 20px);"
-      ></p>
-      <!-- Adding space here -->
-      <div class="mt-12"></div>
-      <!-- End of added space -->
-      <!-- Hide this initially and then show after typing animation -->
-      <h1
-        class="text-4xl text-center opacity-0 transition-opacity duration-1000 delay-400"
-        style="color: #000000; font-family: 'Newsreader', serif;"
-      >
-        Welcome to Minutemen Marketplace!
-      </h1>
-      <!-- Adding space here -->
-      <div class="mt-12"></div>
-      <!-- End of added space -->
+        <!-- Products Section -->
+        <div id="products" class="content">
+            <div class="button-group">
+                <button href="#products" onclick="navigate('products')">
+                    Products
+                </button>
+                <button href="#services" onclick="navigate('services')">
+                    Services
+                </button>
+            </div>
+            <div class="entrytext">
+                <h1>Browse Products...</h1>
+            </div>
+            <div class="search-section">
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Search Products..."
+                        class="search-bar"
+                    />
+                    <select class="sort-type" title="Sort Type">
+                        <option value="">Sort By...</option>
+                        <option value="averageratings">Average Ratings</option>
+                    </select>
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            <div class="container">
+                <div class="header">
+                    <h3>Popular Products</h3>
+                </div>
+                <div class="products-container">
+                </div>
+            </div>
+        </div>
 
-    </div>
-  </div>
+        <!-- Services Section -->
+        <div id="services" class="content">
+            <div class="button-group">
+                <button href="#products" onclick="navigate('products')">
+                    Products
+                </button>
+                <button href="#services" onclick="navigate('services')">
+                    Services
+                </button>
+            </div>
+            <div class="entrytext">
+                <h1>Find Local Services...</h1>
+            </div>
+            <div class="search-section">
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Search Services..."
+                        class="search-bar"
+                    />
+                    <select class="service-type" title="Service Type">
+                        <option value="">Select Service Type...</option>
+                        <option value="barbershop">Barbershop</option>
+                        <option value="photography">Photography</option>
+                        <option value="catering">Catering</option>
+                    </select>
+                    <select class="sort-type" title="Sort Type">
+                        <option value="">Sort By...</option>
+                        <option value="averageratings">Average Ratings</option>
+                    </select>
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            <div class="container">
+                <div class="header">
+                    <h3>Popular Services</h3>
+                </div>
+                <div class="services-container">
+                    <div class="service-card">
+                        <img src="../Images/Service1.png" alt="Service 1" />
+                        <hr />
+                        <div class="companyname">Craig's Barbershop</div>
+                        <div class="rating">Rating: 4.5/5 ★ (587)</div>
+                    </div>
 
-    <script>
-      // Typing animation for empowering text
-      const empoweringText = document.getElementById("empowering-text");
-      const text = "Empowering UMass students one minute at a time";
-      let index = 0;
+                    <div class="service-card">
+                        <img src="../Images/photography.jpg" alt="Service 2" />
+                        <hr />
+                        <div class="companyname">Josh Bell Photography</div>
+                        <div class="rating">Rating: 4.92/5 ★ (53)</div>
+                    </div>
 
-      function typeText() {
-        if (index < text.length) {
-          empoweringText.innerHTML += text.charAt(index);
-          index++;
-          setTimeout(typeText, 30); // Adjust the delay here (in milliseconds)
-        }
-      }
+                    <div class="service-card">
+                        <img src="../Images/gym.jpg" alt="Service 3" />
+                        <hr />
+                        <div class="companyname">
+                            CampusEdge Personal Training
+                        </div>
+                        <div class="rating">Rating: 4.21/5 ★ (23)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      // Start typing animation
-      typeText();
+        <!-- Contact Section -->
+        <div id="contact" class="content">
+            <div class="contact-container">
+                <h1>Contact Us</h1>
+                <p>
+                    We'd love to hear from you! Please fill out the form below
+                    to get in touch with our team.
+                </p>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
 
-      // After typing animation is completed, show the hidden elements
-      document.addEventListener("DOMContentLoaded", function () {
-        const welcomeHeader = document.querySelector(".text-4xl");
-        const links = document.querySelector(".button-group");
-        console.log(links);
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
 
-        // Wait for typing animation to complete before showing hidden elements
-        setTimeout(function () {
-          welcomeHeader.classList.remove("opacity-0");
-          links.style.opacity=1;
-        }, text.length * 30 + 400); // Adjust the delay accordingly
-      });
-    </script>
-  </body>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="footer">
+                <p>&copy; 2024 Minutemen Market. All rights reserved.</p>
+            </div>
+        </div>
+
+        <!-- Login Section -->
+        <div id="login" class="content">
+            <div class="login-container">
+                <h1>Login to Minutemen Marketplace</h1>
+                <form id="loginForm">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required />
+
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                    />
+
+                    <button type="submit" class="form-button">Sign In</button>
+                    <button
+                        onclick="switchToSignup()"
+                        class="switch-button"
+                        type="button"
+                    >
+                        Switch to Signup
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Signup Section -->
+        <div id="signup" class="content hidden">
+            <div class="signup-container">
+                <h1>Sign Up for Minutemen Marketplace</h1>
+                <form id="signupForm">
+                    <label for="newUsername">New Username</label>
+                    <input
+                        type="text"
+                        id="newUsername"
+                        name="newUsername"
+                        required
+                    />
+
+                    <label for="newPassword">New Password</label>
+                    <input
+                        type="password"
+                        id="newPassword"
+                        name="newPassword"
+                        required
+                    />
+
+                    <button type="submit" class="form-button">Sign Up</button>
+                    <button
+                        onclick="switchToLogin()"
+                        class="switch-button"
+                        type="button"
+                    >
+                        Switch to Login
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function navigate(page) {
+                document.querySelectorAll(".content").forEach((div) => {
+                    div.style.display = "none";
+                });
+                document.getElementById(page).style.display = "block";
+            }
+            navigate("home"); // Initialize page with the home section
+        </script>
+        <script src="./app.js"></script>
+    </body>
 </html>
