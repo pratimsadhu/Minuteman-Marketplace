@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Login form elements
+    const loginHeader = document.getElementById('loginHeader');
     const loginForm = document.getElementById('loginForm');
     const switchToSignup = document.getElementById('switchToSignup');
 
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to switch to signup form
     function switchToSignupForm(event) {
         event.preventDefault();
+        loginHeader.classList.add('hidden');
         loginForm.classList.add('hidden');
         switchToSignup.classList.add('hidden');
         signupHeader.classList.remove('hidden');
@@ -23,89 +24,61 @@ document.addEventListener('DOMContentLoaded', function () {
         signupHeader.classList.add('hidden');
         signupForm.classList.add('hidden');
         loginForm.classList.remove('hidden');
+        loginHeader.classList.remove('hidden');
         switchToSignup.classList.remove('hidden');
     }
 
     // Event listeners for switching forms
     switchToSignup.addEventListener('click', switchToSignupForm);
     switchToLogin.addEventListener('click', switchToLoginForm);
+    // Create or open a local database
+    const db = new PouchDB('user_data');
 
-    // Function to validate login form
+    // Function to validate login
     async function validateLoginForm(event) {
         event.preventDefault(); // Prevent form submission
 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // Mock data for validation
-        const mockUsername = "user";
-        const mockPassword = "password";
-
-        // Simulate authentication using async function
         try {
-            await fakeAuthenticate(username, password, mockUsername, mockPassword);
-            alert("Login successful!");
+            // Fetch user document from local database
+            const userDoc = await db.get(username);
+
+            // Check if password matches
+            if (userDoc.password === password) {
+                alert("Login successful!");
+            } else {
+                alert("Incorrect username or password. Please try again.");
+            }
         } catch (error) {
-            alert("Incorrect username or password. Please try again.");
+            alert("User not found. Please sign up first.");
         }
     }
 
-    // Function to validate signup form
+    // Function to handle signup form submission
     async function validateSignupForm(event) {
         event.preventDefault(); // Prevent form submission
 
         const newUsername = document.getElementById('newUsername').value;
         const newPassword = document.getElementById('newPassword').value;
 
-        // Validation for username and password
-        if (newUsername === "" || newPassword === "") {
-            alert("Please enter both a username and a password.");
-            return;
-        }
-
-        // Mock data for signup
-        const mockExistingUsername = "user";
-
-        // Check if username already exists
-        if (newUsername === mockExistingUsername) {
-            alert("Username already exists. Please choose a different username.");
-            return;
-        }
-
-        // Simulate signup process using async function
         try {
-            await fakeSignup(newUsername, newPassword);
-            alert("Signup successful! You can now log in with your new account.");
+            // Check if user already exists
+            await db.get(newUsername);
+            alert("Username already exists. Please choose a different username.");
         } catch (error) {
-            alert("Signup failed. Please try again.");
+            // User does not exist, proceed with signup
+            await db.put({
+                _id: newUsername,
+                password: newPassword
+            });
+            alert("Signup successful! You can now log in with your new account.");
         }
-    }
-
-    // Function to simulate authentication
-    async function fakeAuthenticate(username, password, mockUsername, mockPassword) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (username === mockUsername && password === mockPassword) {
-                    resolve();
-                } else {
-                    reject(new Error("Authentication failed"));
-                }
-            }, 1000); // Simulate delay for authentication
-        });
-    }
-
-    // Function to simulate signup process
-    async function fakeSignup(newUsername, newPassword) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // Here you can add your actual signup logic, like sending data to a server
-                // For now, let's just resolve the promise after a short delay to simulate success
-                resolve();
-            }, 1000); // Simulate delay for signup process
-        });
     }
 
     // Event listeners for form submissions
     loginForm.addEventListener('submit', validateLoginForm);
+
     signupForm.addEventListener('submit', validateSignupForm);
 });
