@@ -23,10 +23,11 @@
 
 <!-- Main Content -->
 <div class="container mx-auto mt-8">
-    <h1 class="text-4xl text-center font text-blue-800 font-arial">Login to Minutemen Marketplace</h1>
+    <h1 class="text-4xl text-center font text-blue-800 font-arial" id="loginHeader">Login to Minutemen Marketplace</h1>
     <div class="mt-12"></div>
+
     <!-- Login Form -->
-    <form class="mx-auto max-w-sm">
+    <form id="loginForm" class="mx-auto max-w-sm">
         <div class="mb-4">
             <label for="username" class="block text-gray-700 font-bold mb-2">Username</label>
             <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -37,10 +38,29 @@
         </div>
         <div class="flex items-center justify-between">
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign In</button>
-            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">Forgot Password?</a>
+            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#" id="switchToSignup">Switch to Signup</a>
+        </div>
+    </form>
+
+    <!-- Signup Form (Hidden by default) -->
+    <h1 class="text-4xl text-center font text-blue-800 font-arial mt-8 hidden" id="signupHeader">Sign Up for Minutemen Marketplace</h1>
+    <form id="signupForm" class="mx-auto max-w-sm mt-4 hidden">
+        <div class="mb-4">
+            <label for="newUsername" class="block text-gray-700 font-bold mb-2">New Username</label>
+            <input type="text" id="newUsername" name="newUsername" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-6">
+            <label for="newPassword" class="block text-gray-700 font-bold mb-2">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign Up</button>
+            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#" id="switchToLogin">Switch to Login</a>
         </div>
     </form>
 </div>
+
+<script src="../Scripts/login.js" defer></script>
 
 </body>
 </html>
