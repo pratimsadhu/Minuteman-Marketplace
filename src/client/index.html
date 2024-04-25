@@ -6,7 +6,7 @@
         <title>Minutemen Marketplace</title>
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./styles.css" />
-
+        
     </head>
     <body>
         <div class="navbar">
@@ -195,7 +195,11 @@
                         required
                     />
 
-                    <button type="submit" class="form-button">Sign In</button>
+                    <button
+                        onclick="loginScript()"
+                        class="form-button"
+                        type="button"
+                    >Login</button>
                     <button
                         onclick="switchToSignup()"
                         class="switch-button"
@@ -227,8 +231,11 @@
                         name="newPassword"
                         required
                     />
-
-                    <button type="submit" class="form-button">Sign Up</button>
+                    <button
+                        onclick="signupScript()"
+                        class="form-button"
+                        type="button"
+                    >Signup</button>
                     <button
                         onclick="switchToLogin()"
                         class="switch-button"
@@ -249,6 +256,8 @@
             }
             navigate("home"); // Initialize page with the home section
         </script>
-        <script src="./app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.2/dist/pouchdb.min.js"></script>
+<script src="./app.js"></script>
+        
     </body>
 </html>
