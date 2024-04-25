@@ -197,3 +197,48 @@ function signupScript() {
           alert('An error occurred while signing up');
       });
 }
+
+
+const goods = [
+    {
+        "name": "I-Clicker",
+        "imageSrc": "./Images/iclicker.jpg",
+        "alt": "Service 1",
+        "price": "26$"
+    },
+    {
+        "name": "Table Lamp",
+        "imageSrc": "./Images/tablelamp.jpg",
+        "alt": "Service 2",
+        "price": "22$"
+    },
+    {
+        "name": "Book Shelf",
+        "imageSrc": "./Images/bookshelf.jpg",
+        "alt": "Service 3",
+        "price": "87$"
+    }
+  ];
+  const services= [
+    {
+      "name": "Craig's Barbershop",
+      "imageSrc": "./Images/Service1.png",
+      "alt": "Service 1",
+      "rating": "4.5",
+      "numOfReviews": 587
+    },
+    {
+      "name": "Josh Bell Photography",
+      "imageSrc": "./Images/photography.jpg",
+      "alt": "Service 2",
+      "rating": "4.92",
+      "numOfReviews": 53
+    },
+    {
+      "name": "CampusEdge Personal Training",
+      "imageSrc": "./Images/gym.jpg",
+      "alt": "Service 3",
+      "rating": "4.21",
+      "numOfReviews": 23
+    }
+  ]
