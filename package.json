@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "script.js",
-    "type": "module",
+    "type": "commonjs",
     "license": "AGPL-version-3.0",
     "private": false,
     "engines": {
@@ -49,11 +49,13 @@
         "validate": "html-validate 'src/**/*.html'",
         "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
         "milestone-02": "http-server src/client -p 3000 -c-1 -o -s",
+        "start": "node src/server/app.js",
         "dev": "",
         "test": ""
     },
     "dependencies": {
         "archiver": "^6.0.1",
+        "express": "^4.19.2",
         "html-validate": "^8.18.1",
         "http-server": "^14.1.1",
         "pouchdb": "^8.0.1"
