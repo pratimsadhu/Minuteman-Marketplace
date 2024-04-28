@@ -22,68 +22,43 @@ const enumTypes = {
  * @param {*} item The item to create in the database
  * @returns The created item with an id or throws an error if the item is invalid
  */
-async function createItem(item) {
-    // Validate the item type
-    const typeInfo = enumTypes[item.type];
-    if (!typeInfo) {
-        throw new Error("Invalid item type");
-    }
-
-    // Validate the required fields
-    const missingFields = typeInfo.requiredFields.filter(
-        (field) => !item[field]
-    );
-    if (missingFields.length) {
-        throw new Error(`Missing required fields: ${missingFields.join(", ")}`);
-    }
-
-    // Create the item in the database
-    const response = await marketDB.post({
-        ...item,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-    });
-    return { id: response.id, ...item };
-}
+async function createItem(req, res) {}
 
 /**
  * This function retrieves an item from the database with the given id.
  * @param {*} id The id of the item to retrieve
  * @returns The item with the given id or null if the item does not exist
  */
-async function getItem(id) {
-    try {
-        const response = await marketDB.get(id);
-        return { id, ...response };
-    } catch (error) {
-        return null;
-    }
-}
+async function getItem(req, res) {}
 
-async function updateItem(id, updates) {}
+async function updateItem(req, res) {}
 
-async function deleteItem(id) {}
+async function deleteItem(req, res) {}
 
-async function listItems() {
+async function listItems(req, res) {
     const response = await marketDB.allDocs({ include_docs: true });
-    return response.rows.map((row) => ({ id: row.id, ...row.doc }));
+    const items = response.rows.map((row) => ({ id: row.id, ...row.doc }));
+    if (items.length === 0) {
+        return res.status(404).json({ message: "No items found" });
+    }
+    res.json(items);
 }
 
 async function listServices() {}
 
 async function listProducts() {}
 
-async function createUser(user) {}
+async function createUser() {}
 
-async function getUser(id) {}
+async function getUser() {}
 
-async function updateUser(id, updates) {}
+async function updateUser() {}
 
-async function deleteUser(id) {}
+async function deleteUser() {}
 
 async function listUsers() {}
 
-async function getItemsByUser(userId) {}
+async function getItemsByUser() {}
 
 module.exports = {
     createItem,
