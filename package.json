@@ -58,7 +58,8 @@
         "express": "^4.19.2",
         "html-validate": "^8.18.1",
         "http-server": "^14.1.1",
-        "pouchdb": "^8.0.1"
+        "pouchdb": "^8.0.1",
+        "pouchdb-find": "^8.0.1"
     },
     "devDependencies": {
         "tailwindcss": "^3.4.3"

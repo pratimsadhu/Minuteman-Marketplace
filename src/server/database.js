@@ -1,4 +1,4 @@
-const pouchdb = require("pouchdb");
+const PouchDB = require("pouchdb");
 PouchDB.plugin(require("pouchdb-find"));
 
 const marketDB = new PouchDB("marketplace");
@@ -64,7 +64,10 @@ async function updateItem(id, updates) {}
 
 async function deleteItem(id) {}
 
-async function listItems() {}
+async function listItems() {
+    const response = await marketDB.allDocs({ include_docs: true });
+    return response.rows.map((row) => ({ id: row.id, ...row.doc }));
+}
 
 async function listServices() {}
 
