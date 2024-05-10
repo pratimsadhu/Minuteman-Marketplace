@@ -69,9 +69,22 @@ h1 {
     padding: 10px;
     display: flex;
     align-items: center;
-    font-family: 'Newsreader', serif;
+    font-family: 'Newsreader', 'serif';
     font-size: 24px;
-    color: #552901;
+    font-weight: bold;
+    color:#552901;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    font-family: 'Newsreader', serif;
 }
 
 /* Entry text styling */
@@ -86,30 +99,66 @@ h1 {
 }
 
 /* Search section styling */
-.search-section {
+.services-search-section {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center; 
+    align-items: center;
+    padding: 20px;
+    background-color: #FFFFF0;
+    border-radius: 50px; /* Large border radius for oval/circular shape */
+    border: 2px solid #552901;
+    width: 44.69%;
+    height: 1px;
+    margin: 0 auto; /* Center the section horizontally */
+}
+
+.products-search-section {
+    display: flex;
+    justify-content: space-evenly; 
     align-items: center;
     padding: 20px;
     background-color: #f9f9f9;
-    border-radius: 50px;
+    border-radius: 50px; /* Large border radius for oval/circular shape */
     border: 2px solid #552901;
-    width: 50%;
-    margin: 0 auto;
+    width: 32.69%;
+    height: 1px;
+    margin: 0 auto; /* Center the section horizontally */
 }
 
-.search-bar, .sort-type, .service-type {
-    border: 2px solid white;
-    padding: 10px;
+.search-bar{
+    border: 2px solid #FFFFF0!important;
+    background-color: #FFFFF0 !important;
+    padding: 4px !important;
+    font-size: 16px !important;
+    font-family: 'Inter', serif !important;
+}
+
+.search-bar::placeholder {
+    color: #000;
+    opacity: 1;
+}
+
+.service-type {
+    border: 2px solid #FFFFF0; 
+    background-color: #FFFFF0 !important;
+    padding: 4px;
     font-size: 16px;
-    font-family: 'Newsreader', serif;
+    font-family: 'Newsreader', 'serif';
+}
+
+.sort-type {
+    border: 2px solid #FFFFF0;
+    background-color: #FFFFF0 !important;
+    padding: 4px;
+    font-size: 16px;
+    font-family: 'Newsreader', 'serif';
 }
 
 .search-button {
     border: none;
     background-color: #552901;
     color: white;
-    padding: 10px 20px;
+    padding: 9px 20px;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -292,6 +341,12 @@ input[type="text"], input[type="password"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.entrytext h1{
+    font-size: 70px;
+    font-family:'Newsreader', 'serif';
+    color: #552901;
 }
 
 .footer {
