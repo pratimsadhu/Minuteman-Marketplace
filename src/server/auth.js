@@ -26,7 +26,11 @@ function authenticate(req, res, next) {
 }
 
 function generateToken(user) {
-    return jwt.sign(user, SECRET_KEY, { expiresIn: "1h" });
+    const payload = {
+        id: user.id,
+        name: user.name,
+    };
+    return jwt.sign(payload, SECRET_KEY, { expiresIn: "1h" });
 }
 
 module.exports = { authenticate, generateToken };

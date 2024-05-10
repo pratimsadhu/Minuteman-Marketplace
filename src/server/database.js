@@ -169,7 +169,13 @@ async function loginUser(req, res) {
 }
 
 async function getUser(req, res) {
+    const userId = req.user.id;
     const { id } = req.params;
+
+    if (userId !== id) {
+        return res.status(403).json({ message: "Access denied" });
+    }
+    
     try {
         const response = await userDB.get(id);
         res.json({ id: response.id, ...response });
