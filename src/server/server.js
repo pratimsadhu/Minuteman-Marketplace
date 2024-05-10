@@ -14,6 +14,7 @@ const {
     deleteUser,
     listUsers,
     getItemsByUser,
+    loginUser,
 } = require("./database");
 
 const router = express.Router();
@@ -25,7 +26,8 @@ router.route("/products").get(listProducts);
 router.route("/items").post(createItem).get(listItems);
 router.route("/items/:id").get(getItem);
 
-router.route("/users").post(createUser);
+router.route("/signup").post(createUser);
+router.route("/login").post(loginUser)
 router.use(authenticate);
 router.route("/users").get(listUsers);
 router.route("/users/:id").get(getUser).put(updateUser).delete(deleteUser);

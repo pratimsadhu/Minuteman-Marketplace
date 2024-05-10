@@ -175,7 +175,7 @@ async function getUser(req, res) {
     if (userId !== id) {
         return res.status(403).json({ message: "Access denied" });
     }
-    
+
     try {
         const response = await userDB.get(id);
         res.json({ id: response.id, ...response });
@@ -245,4 +245,5 @@ module.exports = {
     deleteUser,
     listUsers,
     getItemsByUser,
+    loginUser,
 };
