@@ -2,6 +2,9 @@ const PouchDB = require("pouchdb");
 const bcrypt = require("bcrypt");
 const { generateToken } = require("./auth");
 PouchDB.plugin(require("pouchdb-find"));
+const nodemailer = require("nodemailer");
+const validator = require("email-validator");
+require('dotenv').config();
 
 const marketDB = new PouchDB("marketplace");
 const userDB = new PouchDB("users");
@@ -231,6 +234,46 @@ async function getItemsByUser(req, res) {
     }
 }
 
+async function receiveEmail(req, res) {
+    const { name, email_address, message } = req.body;
+
+    if (!name || !email_address || !message) {
+        return res
+            .status(400)
+            .json({ message: "Name, email, and message are required" });
+    }
+
+    if (!validator.validate(email_address)) {
+        return res.status(400).json({ message: "Invalid email address" });
+    }
+
+    try {
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: "psadhu@umass.edu, sjaison@umass.edu",
+            subject: `${name} <${email_address}> contacted you - Minuteman Marketplace!`,
+            text: message,
+            html: `<p><strong>${name}</strong> (<a href="mailto:${email_address}">${email_address}</a>) sent you a message:</p><p>${message}</p>`,
+        };
+
+        await transporter.sendMail(mailOptions);
+        return res.json({ message: "Message sent successfully" });
+    } catch (error) {
+        console.error("Email sending error:", error);
+        return res
+            .status(500)
+            .json({ message: "Couldn't send message!", error: error.message });
+    }
+}
+
 module.exports = {
     createItem,
     getItem,
@@ -246,4 +289,5 @@ module.exports = {
     listUsers,
     getItemsByUser,
     loginUser,
+    receiveEmail,
 };

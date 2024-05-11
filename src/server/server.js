@@ -15,9 +15,12 @@ const {
     listUsers,
     getItemsByUser,
     loginUser,
+    receiveEmail,
 } = require("./database");
 
 const router = express.Router();
+
+router.route("/email").post(receiveEmail);
 
 router.route("/services").get(listServices);
 
