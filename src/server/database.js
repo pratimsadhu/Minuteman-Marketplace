@@ -235,15 +235,15 @@ async function getItemsByUser(req, res) {
 }
 
 async function receiveEmail(req, res) {
-    const { name, email_address, message } = req.body;
+    const { name, email, message } = req.body;
 
-    if (!name || !email_address || !message) {
+    if (!name || !email || !message) {
         return res
             .status(400)
             .json({ message: "Name, email, and message are required" });
     }
 
-    if (!validator.validate(email_address)) {
+    if (!validator.validate(email)) {
         return res.status(400).json({ message: "Invalid email address" });
     }
 
@@ -258,10 +258,10 @@ async function receiveEmail(req, res) {
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "psadhu@umass.edu, sjaison@umass.edu, ekemper@umass.edu, sbadheka@umass.edu",
-            subject: `${name} <${email_address}> contacted you - Minuteman Marketplace!`,
+            to: "psadhu@umass.edu",
+            subject: `${name} <${email}> contacted you - Minuteman Marketplace!`,
             text: message,
-            html: `<p><strong>${name}</strong> (<a href="mailto:${email_address}">${email_address}</a>) sent you a message:</p><p>${message}</p>`,
+            html: `<p><strong>${name}</strong> (<a href="mailto:${email}">${email}</a>) sent you a message:</p><p>${message}</p>`,
         };
 
         await transporter.sendMail(mailOptions);
