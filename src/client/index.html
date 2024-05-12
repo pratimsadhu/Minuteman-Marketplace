@@ -414,6 +414,21 @@
                     .getElementById("serviceButton")
                     .classList.remove("selected");
                 document.getElementById("listingType").value = "product";
+
+                [
+                    "productName",
+                    "productPrice",
+                    "productEmail",
+                    "productPhone",
+                ].forEach((id) => {
+                    document.getElementById(id).required = true;
+                });
+
+                ["serviceName", "serviceEmail", "servicePhone"].forEach(
+                    (id) => {
+                        document.getElementById(id).required = false;
+                    }
+                );
             }
 
             function showServiceForm() {
@@ -426,6 +441,21 @@
                     .getElementById("serviceButton")
                     .classList.add("selected");
                 document.getElementById("listingType").value = "service";
+
+                ["serviceName", "serviceEmail", "servicePhone"].forEach(
+                    (id) => {
+                        document.getElementById(id).required = true;
+                    }
+                );
+
+                [
+                    "productName",
+                    "productPrice",
+                    "productEmail",
+                    "productPhone",
+                ].forEach((id) => {
+                    document.getElementById(id).required = false;
+                });
             }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.2/dist/pouchdb.min.js"></script>

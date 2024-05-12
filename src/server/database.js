@@ -36,16 +36,28 @@ async function createItem(req, res) {
     const requiredFields = enumTypes[item.type].requiredFields;
     const missingFields = requiredFields.filter((field) => !item[field]);
     if (missingFields.length > 0) {
-        return res
-            .status(400)
-            .json({ message: `Missing required fields: ${missingFields}` });
+        return res.status(400).json({ message: `Missing required fields: ${missingFields.join(", ")}` });
+    }
+
+    const attachments = {};
+    if (item.images && item.images.length > 0) {
+        item.images.forEach((image, index) => {
+            attachments[`image_${index}.jpeg`] = {
+                content_type: "image/jpeg", 
+                data: image
+            };
+        });
     }
 
     try {
-        const response = await marketDB.post(item);
+        const response = await marketDB.post({
+            ...item,
+            _attachments: attachments
+        });
         res.json({ id: response.id, ...item });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error("Error in creating item:", error);
+        res.status(500).json({ message: "Internal server error: " + error.message });
     }
 }
 
@@ -57,7 +69,7 @@ async function createItem(req, res) {
 async function getItem(req, res) {
     const { id } = req.params;
     try {
-        const response = await marketDB.get(id);
+        const response = await marketDB.get(id, { attachments: true });
         res.json({ id: response.id, ...response });
     } catch (error) {
         res.status(404).json({ message: "Item not found" });

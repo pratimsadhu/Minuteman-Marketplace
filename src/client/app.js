@@ -311,37 +311,41 @@ document
             });
     });
 
-document
+    document
     .getElementById("listingForm")
-    .addEventListener("submit", function (event) {
+    .addEventListener("submit", async function (event) {
         event.preventDefault();
 
         let type = document.getElementById("listingType").value;
         let item;
 
-        if (type === "product") {
-            let name = document.getElementById("productName").value;
-            let email = document.getElementById("productEmail").value;
-            let phone = document.getElementById("productPhone").value;
-            let price = document.getElementById("productPrice").value;
+        async function encodeImages(files) {
+            const images = [];
+            for (let i = 0; i < files.length; i++) {
+                const imagePromise = new Promise((resolve, reject) => {
+                    getBase64(files[i], resolve);
+                });
+                images.push(imagePromise);
+            }
+            return Promise.all(images);
+        }
 
+        if (type === "product" || type === "service") {
+            let name = document.getElementById(type + "Name").value;
+            let email = document.getElementById(type + "Email").value;
+            let phone = document.getElementById(type + "Phone").value;
+            let price = type === "product" ? document.getElementById("productPrice").value : undefined;
+            let files = document.getElementById(type + "Image").files;
+    
+            const images = await encodeImages(files);
+    
             item = {
                 type: type,
                 name: name,
                 email: email,
                 phoneNo: phone,
                 price: price,
-            };
-        } else {
-            let name = document.getElementById("serviceName").value;
-            let email = document.getElementById("serviceEmail").value;
-            let phone = document.getElementById("servicePhone").value;
-
-            item = {
-                type: type,
-                name: name,
-                email: email,
-                phoneNo: phone,
+                images: images,
             };
         }
 
@@ -377,4 +381,21 @@ function showNotification(message, duration = 3000) {
             notification.style.top = "-50px"; 
         }, 500); 
     }, duration);
+}
+
+function isValidBase64(str) {
+    const regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
+    return regex.test(str);
+}
+
+function getBase64(file, callback) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        const base64String = reader.result.replace(/^data:.+;base64,/, '');
+        callback(base64String);
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
 }
