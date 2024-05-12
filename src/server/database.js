@@ -26,7 +26,28 @@ const enumTypes = {
  * @param {*} item The item to create in the database
  * @returns The created item with an id or throws an error if the item is invalid
  */
+async function createItem(req, res) {
+    const { ...item } = req.body;
 
+    if (!item.type) {
+        return res.status(400).json({ message: "Type is required" });
+    }
+
+    const requiredFields = enumTypes[item.type].requiredFields;
+    const missingFields = requiredFields.filter((field) => !item[field]);
+    if (missingFields.length > 0) {
+        return res
+            .status(400)
+            .json({ message: `Missing required fields: ${missingFields}` });
+    }
+
+    try {
+        const response = await marketDB.post(item);
+        res.json({ id: response.id, ...item });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 
 /**
  * This function retrieves an item from the database with the given id.
@@ -255,28 +276,7 @@ async function receiveEmail(req, res) {
     }
 }
 
-async function createItem(req, res) {
-    const { ...item } = req.body;
 
-    if (!item.type) {
-        return res.status(400).json({ message: "Type is required" });
-    }
-
-    const requiredFields = enumTypes[item.type].requiredFields;
-    const missingFields = requiredFields.filter((field) => !item[field]);
-    if (missingFields.length > 0) {
-        return res
-            .status(400)
-            .json({ message: `Missing required fields: ${missingFields}` });
-    }
-
-    try {
-        const response = await marketDB.post(item);
-        res.json({ id: response.id, ...item });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
 
 module.exports = {
     createItem,

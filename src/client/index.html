@@ -4,21 +4,31 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Minutemen Marketplace</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="./styles.css" />
-        
     </head>
     <body>
+        <!-- Notification -->
+        <div id="notification" class="notification">Message</div>
+
+        <!-- Navbar -->
         <div class="navbar">
             <a href="#" class="logo" onclick="navigate('home')"
                 >Minutemen Market</a
             >
             <ul class="nav-links">
-                <li><a href="#listing" onclick="navigate('listing')">Add Listing</a></li>
+                <li>
+                    <a href="#listing" onclick="navigate('listing')"
+                        >Add Listing</a
+                    >
+                </li>
                 <li><a href="#login" onclick="navigate('login')">Login</a></li>
                 <li>
                     <a href="#contact" onclick="navigate('contact')"
-                    >Contact Us</a
+                        >Contact Us</a
                     >
                 </li>
             </ul>
@@ -29,52 +39,125 @@
             <div class="listing-container">
                 <h1>Add a Listing</h1>
                 <form id="listingForm">
-                    <input type="hidden" id="listingType" name="type" value="product">
+                    <input
+                        type="hidden"
+                        id="listingType"
+                        name="type"
+                        value="product"
+                    />
                     <div class="headbar">
-                        <button id="productButton" onclick="showProductForm()" class="form-button" type="button">Product</button>
-                        <button id="serviceButton" onclick="showServiceForm()" class="form-button" type="button">Service</button>
+                        <button
+                            id="productButton"
+                            onclick="showProductForm()"
+                            class="form-button"
+                            type="button"
+                        >
+                            Product
+                        </button>
+                        <button
+                            id="serviceButton"
+                            onclick="showServiceForm()"
+                            class="form-button"
+                            type="button"
+                        >
+                            Service
+                        </button>
                     </div>
-                    <div id="productForm" style="display: none;">
+                    <div id="productForm" style="display: none">
                         <div class="form-group">
                             <label for="productName">Product Name:</label>
-                            <input type="text" id="productName" name="productName" required />
+                            <input
+                                type="text"
+                                id="productName"
+                                name="productName"
+                                required
+                            />
                         </div>
                         <div class="form-group">
                             <label for="productPrice">Price:</label>
-                            <input type="text" id="productPrice" name="productPrice" required />
+                            <input
+                                type="text"
+                                id="productPrice"
+                                name="productPrice"
+                                required
+                            />
                         </div>
                         <div class="form-group">
-                            <label for="productEmail">Email Address of Seller:</label>
-                            <input type="email" id="productEmail" name="productEmail" required />
+                            <label for="productEmail"
+                                >Email Address of Seller:</label
+                            >
+                            <input
+                                type="email"
+                                id="productEmail"
+                                name="productEmail"
+                                required
+                            />
                         </div>
                         <div class="form-group">
-                            <label for="productPhone">Phone Number of Seller:</label>
-                            <input type="text" id="productPhone" name="productPhone" required />
+                            <label for="productPhone"
+                                >Phone Number of Seller:</label
+                            >
+                            <input
+                                type="text"
+                                id="productPhone"
+                                name="productPhone"
+                                required
+                            />
                         </div>
                         <div class="form-group">
                             <label for="productImage">Image of Product:</label>
-                            <input type="file" id="productImage" name="productImage" accept="image/*" />
+                            <input
+                                type="file"
+                                id="productImage"
+                                name="productImage"
+                                accept="image/*"
+                            />
                         </div>
                     </div>
-                    <div id="serviceForm" style="display: none;">
+                    <div id="serviceForm" style="display: none">
                         <div class="form-group">
-                            <label for="serviceName">Company/Service Name:</label>
-                            <input type="text" id="serviceName" name="serviceName" />
+                            <label for="serviceName"
+                                >Company/Service Name:</label
+                            >
+                            <input
+                                type="text"
+                                id="serviceName"
+                                name="serviceName"
+                            />
                         </div>
                         <div class="form-group">
-                            <label for="serviceEmail">Email Address of Service Provider:</label>
-                            <input type="email" id="serviceEmail" name="serviceEmail" />
+                            <label for="serviceEmail"
+                                >Email Address of Service Provider:</label
+                            >
+                            <input
+                                type="email"
+                                id="serviceEmail"
+                                name="serviceEmail"
+                            />
                         </div>
                         <div class="form-group">
-                            <label for="servicePhone">Phone Number of Service Provider:</label>
-                            <input type="text" id="servicePhone" name="servicePhone" />
+                            <label for="servicePhone"
+                                >Phone Number of Service Provider:</label
+                            >
+                            <input
+                                type="text"
+                                id="servicePhone"
+                                name="servicePhone"
+                            />
                         </div>
                         <div class="form-group">
                             <label for="serviceImage">Image:</label>
-                            <input type="file" id="serviceImage" name="serviceImage" accept="image/*" />
+                            <input
+                                type="file"
+                                id="serviceImage"
+                                name="serviceImage"
+                                accept="image/*"
+                            />
                         </div>
                     </div>
-                    <button class="form-button" type="submit">Add Listing</button>
+                    <button class="form-button" type="submit">
+                        Add Listing
+                    </button>
                 </form>
             </div>
         </div>
@@ -86,12 +169,19 @@
                     <button onclick="navigate('products')">Products</button>
                     <button onclick="navigate('services')">Services</button>
                 </div>
-                <p class="text-6xl text-center mt-4 font text-black-800 leading-relaxed underline font-times empowering-text" id="empowering-text"></p>
+                <p
+                    class="text-6xl text-center mt-4 font text-black-800 leading-relaxed underline font-times empowering-text"
+                    id="empowering-text"
+                ></p>
                 <!-- Adding space here -->
                 <div class="mt-12"></div>
                 <!-- End of added space -->
                 <!-- Hide this initially and then show after typing animation -->
-                <h1 class="text-4xl text-center opacity-0 transition-opacity duration-1000 delay-400">Welcome to Minutemen Marketplace!</h1>
+                <h1
+                    class="text-4xl text-center opacity-0 transition-opacity duration-1000 delay-400"
+                >
+                    Welcome to Minutemen Marketplace!
+                </h1>
                 <!-- Adding space here -->
                 <div class="mt-12"></div>
                 <!-- End of added space -->
@@ -129,8 +219,7 @@
                 <div class="header">
                     <h3>Popular Products</h3>
                 </div>
-                <div class="products-container">
-                </div>
+                <div class="products-container"></div>
             </div>
         </div>
 
@@ -235,7 +324,6 @@
             </div>
         </div>
 
-        
         <div id="login" class="content">
             <div class="login-container">
                 <h1>Login to Minutemen Marketplace</h1>
@@ -255,7 +343,9 @@
                         onclick="loginScript()"
                         class="form-button"
                         type="button"
-                    >Login</button>
+                    >
+                        Login
+                    </button>
                     <button
                         onclick="switchToSignup()"
                         class="switch-button"
@@ -291,7 +381,9 @@
                         onclick="signupScript()"
                         class="form-button"
                         type="button"
-                    >Signup</button>
+                    >
+                        Signup
+                    </button>
                     <button
                         onclick="switchToLogin()"
                         class="switch-button"
@@ -304,7 +396,7 @@
         </div>
 
         <script>
-            let listingType = ""; 
+            let listingType = "";
             function navigate(page) {
                 document.querySelectorAll(".content").forEach((div) => {
                     div.style.display = "none";
@@ -315,23 +407,28 @@
             function showProductForm() {
                 document.getElementById("productForm").style.display = "block";
                 document.getElementById("serviceForm").style.display = "none";
-                document.getElementById("productButton").classList.add("selected");
-                document.getElementById("serviceButton").classList.remove("selected");
+                document
+                    .getElementById("productButton")
+                    .classList.add("selected");
+                document
+                    .getElementById("serviceButton")
+                    .classList.remove("selected");
                 document.getElementById("listingType").value = "product";
             }
 
             function showServiceForm() {
                 document.getElementById("productForm").style.display = "none";
                 document.getElementById("serviceForm").style.display = "block";
-                document.getElementById("productButton").classList.remove("selected");
-                document.getElementById("serviceButton").classList.add("selected");
+                document
+                    .getElementById("productButton")
+                    .classList.remove("selected");
+                document
+                    .getElementById("serviceButton")
+                    .classList.add("selected");
                 document.getElementById("listingType").value = "service";
             }
-
-
         </script>
-<script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.2/dist/pouchdb.min.js"></script>
-<script src="./app.js"></script>
-        
+        <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.2/dist/pouchdb.min.js"></script>
+        <script src="./app.js"></script>
     </body>
 </html>
