@@ -285,33 +285,30 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let type;
-    let item;
+    let type = document.querySelector('input[name="type"]:checked').value;
     if (type === "product") {
       let name = document.getElementById("productName").value;
       let email = document.getElementById("productEmail").value;
       let phone = document.getElementById("productPhone").value;
       let price = document.getElementById("productPrice").value;
-      let image = document.getElementById("productImage");
 
-      item = {
+      const item = {
+        type: type,
         name: name,
         email: email,
         phoneNo: phone,
         price: price,
-        image: image,
       };
     } else {
       let name = document.getElementById("serviceName").value;
       let email = document.getElementById("serviceEmail").value;
       let phone = document.getElementById("servicePhone").value;
-      let image = document.getElementById("serviceImage");
 
-      item = {
+      const item = {
+        type: type,
         name: name,
         email: email,
         phoneNo: phone,
-        image: image,
       };
     }
 
@@ -320,7 +317,7 @@ document
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(type, item),
+      body: JSON.stringify(item),
     })
       .then((data) => {
         document.getElementById("listingForm").reset();
