@@ -193,20 +193,28 @@ function loginScript() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    checkUsername(username)
-        .then((user) => {
-            if (user && user.password === password) {
-                alert("Login successful");
-                // Redirect or perform other actions after successful login
-            } else {
-                alert("Invalid username or password");
-            }
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("An error occurred while logging in");
-        });
+    fetch("/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+    })
+    .then((response) => {
+        if (response.ok) {
+            alert("Login successful");
+            localStorage.setItem("token", "your_token_here");
+            // Redirect or perform actions after successful login
+        } else {
+            throw new Error("Invalid username or password");
+        }
+    })
+    .catch((error) => {
+        console.error("Login Error:", error);
+        alert("Invalid username or password");
+    });
 }
+
 
 /**
  * Function to handle user signup.
@@ -215,30 +223,27 @@ function signupScript() {
     const newUsername = document.getElementById("newUsername").value;
     const newPassword = document.getElementById("newPassword").value;
 
-    // Check if the username already exists
-    checkUsername(newUsername)
-        .then((existingUser) => {
-            if (existingUser) {
-                alert(
-                    "Username already exists. Please choose a different one."
-                );
-            } else {
-                // If username does not exist, create a new user document
-                return db.put({
-                    _id: newUsername,
-                    password: newPassword,
-                });
-            }
-        })
-        .then(() => {
+    fetch("/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: newUsername, password: newPassword }),
+    })
+    .then((response) => {
+        if (response.ok) {
             alert("Signup successful");
-            // Redirect or perform other actions after successful signup
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("An error occurred while signing up");
-        });
+            // Redirect or perform actions after successful signup
+        } else {
+            throw new Error("Username already exists or other error");
+        }
+    })
+    .catch((error) => {
+        console.error("Signup Error:", error);
+        alert("Username already exists or other error occurred");
+    });
 }
+
 
 const goods = [
     {
