@@ -14,6 +14,10 @@ function navigate(page) {
     }
 }
 
+function isAuthenticated(){
+  return localStorage.getItem("token") !== null;
+}
+
 /**
  * Function to switch to the signup section.
  */
@@ -324,6 +328,12 @@ document
 
         let type = document.getElementById("listingType").value;
         let item;
+
+        if (!isAuthenticated()) {
+          showNotification("Please log in to add a listing.");
+          navigate("login");
+          return;
+        }
 
         async function encodeImages(files) {
             const images = [];

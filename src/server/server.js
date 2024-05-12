@@ -26,7 +26,7 @@ router.route("/services").get(listServices);
 
 router.route("/products").get(listProducts);
 
-router.route("/items").post(createItem).get(listItems);
+router.route("/items").post(authenticate, createItem).get(listItems);
 router.route("/items/:id").get(getItem);
 
 router.route("/signup").post(createUser);
