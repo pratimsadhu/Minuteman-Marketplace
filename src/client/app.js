@@ -72,94 +72,97 @@ printEmpowering();
  */
 async function fetchProducts() {
     try {
-      const response = await fetch("/products");
-      console.log(response.json());
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const products = await response.json();
-      return products;
+        const response = await fetch("/products");
+        console.log(response.json());
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const products = await response.json();
+        return products;
     } catch (error) {
-      console.error('Error fetching products:', error);
-      return null;
+        console.error("Error fetching products:", error);
+        return null;
     }
-  }
-  async function fetchServices() {
+}
+async function fetchServices() {
     try {
-      const response = await fetch("/items");
-      console.log(response.json());
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const products = await response.json();
-      return products;
+        const response = await fetch("/items");
+        console.log(response.json());
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const products = await response.json();
+        return products;
     } catch (error) {
-      console.error('Error fetching products:', error);
-      return null;
+        console.error("Error fetching products:", error);
+        return null;
     }
-  }
-  
-  /**
-  * Function to render goods or services.
-  * @param {string} prodServ - Indicates whether to render goods or services.
-  */
-  function renderGoods(prodServ) {
-  let productsContainer;
-  let products;
-  const cardClass = prodServ === "services" ? "service-card" : "product-card";
-  
-  // Determine which container and card class to use based on input
-  if (prodServ === "services") {
-    productsContainer = document.querySelector(".services-container");
-    products = fetchServices();
-  } else {
-    productsContainer = document.querySelector(".products-container");
-    products = fetchProducts();
-  }
-  
-  // Clear existing content in the container
-  productsContainer.innerHTML = "";
-  
-  // Loop through products and create cards
-  products.forEach((product) => {
-    const productCard = document.createElement("div");
-    productCard.classList.add(cardClass);
-  
-    const img = document.createElement("img");
-    img.src = product.imageSrc;
-    img.alt = product.alt;
-  
-    const hr = document.createElement("hr");
-  
-    const descContainer = document.createElement("div");
-    descContainer.classList.add("desc-container");
-  
-    const nameElement = document.createElement("div");
-    nameElement.classList.add(
-      cardClass === "product-card" ? "productname" : "companyname"
-    );
-    nameElement.textContent = product.name;
-  
-    const extraInfo = document.createElement("div");
-    extraInfo.classList.add(cardClass === "product-card" ? "price" : "rating");
-    extraInfo.textContent =
-      cardClass === "product-card"
-        ? `Price: ${product.price}`
-        : `Rating: ${product.rating}/5★ (${product.numOfReviews})`;
-    extraInfo.style.fontSize = "16px";
-    extraInfo.style.color = cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
-  
-    // Append elements to their respective parents
-    descContainer.appendChild(nameElement);
-    descContainer.appendChild(extraInfo);
-  
-    productCard.appendChild(img);
-    productCard.appendChild(hr);
-    productCard.appendChild(descContainer);
-  
-    productsContainer.appendChild(productCard);
-  });
-  }
+}
+
+/**
+ * Function to render goods or services.
+ * @param {string} prodServ - Indicates whether to render goods or services.
+ */
+function renderGoods(prodServ) {
+    let productsContainer;
+    let products;
+    const cardClass = prodServ === "services" ? "service-card" : "product-card";
+
+    // Determine which container and card class to use based on input
+    if (prodServ === "services") {
+        productsContainer = document.querySelector(".services-container");
+        products = fetchServices();
+    } else {
+        productsContainer = document.querySelector(".products-container");
+        products = fetchProducts();
+    }
+
+    // Clear existing content in the container
+    productsContainer.innerHTML = "";
+
+    // Loop through products and create cards
+    products.forEach((product) => {
+        const productCard = document.createElement("div");
+        productCard.classList.add(cardClass);
+
+        const img = document.createElement("img");
+        img.src = product.imageSrc;
+        img.alt = product.alt;
+
+        const hr = document.createElement("hr");
+
+        const descContainer = document.createElement("div");
+        descContainer.classList.add("desc-container");
+
+        const nameElement = document.createElement("div");
+        nameElement.classList.add(
+            cardClass === "product-card" ? "productname" : "companyname"
+        );
+        nameElement.textContent = product.name;
+
+        const extraInfo = document.createElement("div");
+        extraInfo.classList.add(
+            cardClass === "product-card" ? "price" : "rating"
+        );
+        extraInfo.textContent =
+            cardClass === "product-card"
+                ? `Price: ${product.price}`
+                : `Rating: ${product.rating}/5★ (${product.numOfReviews})`;
+        extraInfo.style.fontSize = "16px";
+        extraInfo.style.color =
+            cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
+
+        // Append elements to their respective parents
+        descContainer.appendChild(nameElement);
+        descContainer.appendChild(extraInfo);
+
+        productCard.appendChild(img);
+        productCard.appendChild(hr);
+        productCard.appendChild(descContainer);
+
+        productsContainer.appendChild(productCard);
+    });
+}
 
 /**
  * Function to check if the username exists in the database.
@@ -307,11 +310,14 @@ document
             })
             .catch((error) => {
                 console.error("Error:", error);
-                showNotification("An error occurred while sending the email", 2000);
+                showNotification(
+                    "An error occurred while sending the email",
+                    2000
+                );
             });
     });
 
-    document
+document
     .getElementById("listingForm")
     .addEventListener("submit", async function (event) {
         event.preventDefault();
@@ -334,11 +340,14 @@ document
             let name = document.getElementById(type + "Name").value;
             let email = document.getElementById(type + "Email").value;
             let phone = document.getElementById(type + "Phone").value;
-            let price = type === "product" ? document.getElementById("productPrice").value : undefined;
+            let price =
+                type === "product"
+                    ? document.getElementById("productPrice").value
+                    : undefined;
             let files = document.getElementById(type + "Image").files;
-    
+
             const images = await encodeImages(files);
-    
+
             item = {
                 type: type,
                 name: name,
@@ -360,7 +369,7 @@ document
             .then((data) => {
                 document.getElementById("listingForm").reset();
                 navigate("home");
-                showNotification(data.message);
+                showNotification(`${data.type} listed successfully`);
             })
             .catch((error) => {
                 console.error("Error: ", error);
@@ -370,21 +379,22 @@ document
 
 function showNotification(message, duration = 3000) {
     const notification = document.getElementById("notification");
-    notification.textContent = message; 
+    notification.textContent = message;
     notification.classList.add("show");
 
     setTimeout(() => {
         notification.classList.add("hide");
         setTimeout(() => {
             notification.classList.remove("show", "hide");
-            notification.style.opacity = 1; 
-            notification.style.top = "-50px"; 
-        }, 500); 
+            notification.style.opacity = 1;
+            notification.style.top = "-50px";
+        }, 500);
     }, duration);
 }
 
 function isValidBase64(str) {
-    const regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
+    const regex =
+        /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
     return regex.test(str);
 }
 
@@ -392,10 +402,10 @@ function getBase64(file, callback) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
-        const base64String = reader.result.replace(/^data:.+;base64,/, '');
+        const base64String = reader.result.replace(/^data:.+;base64,/, "");
         callback(base64String);
     };
     reader.onerror = function (error) {
-        console.log('Error: ', error);
+        console.log("Error: ", error);
     };
 }
