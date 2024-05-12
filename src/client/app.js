@@ -379,7 +379,7 @@ document
             .then((data) => {
                 document.getElementById("listingForm").reset();
                 navigate("home");
-                showNotification(`${data.type} listed successfully`);
+                showNotification(`${item.name} listed successfully`);
             })
             .catch((error) => {
                 console.error("Error: ", error);
@@ -396,8 +396,8 @@ function showNotification(message, duration = 3000) {
         notification.classList.add("hide");
         setTimeout(() => {
             notification.classList.remove("show", "hide");
-            notification.style.opacity = 1;
-            notification.style.top = "-50px";
+            notification.style.opacity = "";
+            notification.style.top = "";
         }, 500);
     }, duration);
 }
