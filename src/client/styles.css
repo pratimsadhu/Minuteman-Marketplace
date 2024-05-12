@@ -231,8 +231,24 @@ h1 {
     color: white;
 }
 
+.headbar{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.headbar button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    font-family: 'Newsreader', serif;
+}
 /* Login and Signup container styling */
-.login-container, .signup-container {
+.login-container, .signup-container, .listing-container {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
@@ -242,14 +258,14 @@ h1 {
 }
 
 /* Headings within Login and Signup */
-.login-container h1, .signup-container h1 {
+.login-container h1, .signup-container h1, .listing-container h1 {
     color: #552901;
     font-family: 'Newsreader', serif;
     text-align: center;
 }
 
 /* Form styling */
-#loginForm, #signupForm {
+#loginForm, #signupForm, #listingForm {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -271,17 +287,22 @@ input[type="text"], input[type="password"] {
 
 /* Buttons within forms */
 .form-button {
-    padding: 10px;
+    /* padding: 10px; */
     border: none;
-    background-color: #552901;
-    color: white;
+    /* background-color: #552901; */
+    color: #552901;
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Newsreader', serif;
 }
 
+.selected {
+    background-color: #552901;
+    color: white
+}
+
 .form-button:hover {
-    background-color: #883202;
+    background-color: #f7bd9d;
 }
 
 .switch-button {
