@@ -70,74 +70,96 @@ printEmpowering();
  * Function to get goods data.
  * @returns {Array} An array containing goods data.
  */
-function getGoods() {
-    return goods;
-}
-
-/**
- * Function to render goods or services.
- * @param {string} prodServ - Indicates whether to render goods or services.
- */
-function renderGoods(prodServ) {
-    let productsContainer;
-    let products;
-    const cardClass = prodServ === "services" ? "service-card" : "product-card";
-
-    // Determine which container and card class to use based on input
-    if (prodServ === "services") {
-        productsContainer = document.querySelector(".services-container");
-        products = services;
-    } else {
-        productsContainer = document.querySelector(".products-container");
-        products = getGoods();
+async function fetchProducts() {
+    try {
+      const response = await fetch("/products");
+      console.log(response.json());
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const products = await response.json();
+      return products;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      return null;
     }
-
-    // Clear existing content in the container
-    productsContainer.innerHTML = "";
-
-    // Loop through products and create cards
-    products.forEach((product) => {
-        const productCard = document.createElement("div");
-        productCard.classList.add(cardClass);
-
-        const img = document.createElement("img");
-        img.src = product.imageSrc;
-        img.alt = product.alt;
-
-        const hr = document.createElement("hr");
-
-        const descContainer = document.createElement("div");
-        descContainer.classList.add("desc-container");
-
-        const nameElement = document.createElement("div");
-        nameElement.classList.add(
-            cardClass === "product-card" ? "productname" : "companyname"
-        );
-        nameElement.textContent = product.name;
-
-        const extraInfo = document.createElement("div");
-        extraInfo.classList.add(
-            cardClass === "product-card" ? "price" : "rating"
-        );
-        extraInfo.textContent =
-            cardClass === "product-card"
-                ? `Price: ${product.price}`
-                : `Rating: ${product.rating}/5★ (${product.numOfReviews})`;
-        extraInfo.style.fontSize = "16px";
-        extraInfo.style.color =
-            cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
-
-        // Append elements to their respective parents
-        descContainer.appendChild(nameElement);
-        descContainer.appendChild(extraInfo);
-
-        productCard.appendChild(img);
-        productCard.appendChild(hr);
-        productCard.appendChild(descContainer);
-
-        productsContainer.appendChild(productCard);
-    });
-}
+  }
+  async function fetchServices() {
+    try {
+      const response = await fetch("/items");
+      console.log(response.json());
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const products = await response.json();
+      return products;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      return null;
+    }
+  }
+  
+  /**
+  * Function to render goods or services.
+  * @param {string} prodServ - Indicates whether to render goods or services.
+  */
+  function renderGoods(prodServ) {
+  let productsContainer;
+  let products;
+  const cardClass = prodServ === "services" ? "service-card" : "product-card";
+  
+  // Determine which container and card class to use based on input
+  if (prodServ === "services") {
+    productsContainer = document.querySelector(".services-container");
+    products = fetchServices();
+  } else {
+    productsContainer = document.querySelector(".products-container");
+    products = fetchProducts();
+  }
+  
+  // Clear existing content in the container
+  productsContainer.innerHTML = "";
+  
+  // Loop through products and create cards
+  products.forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.classList.add(cardClass);
+  
+    const img = document.createElement("img");
+    img.src = product.imageSrc;
+    img.alt = product.alt;
+  
+    const hr = document.createElement("hr");
+  
+    const descContainer = document.createElement("div");
+    descContainer.classList.add("desc-container");
+  
+    const nameElement = document.createElement("div");
+    nameElement.classList.add(
+      cardClass === "product-card" ? "productname" : "companyname"
+    );
+    nameElement.textContent = product.name;
+  
+    const extraInfo = document.createElement("div");
+    extraInfo.classList.add(cardClass === "product-card" ? "price" : "rating");
+    extraInfo.textContent =
+      cardClass === "product-card"
+        ? `Price: ${product.price}`
+        : `Rating: ${product.rating}/5★ (${product.numOfReviews})`;
+    extraInfo.style.fontSize = "16px";
+    extraInfo.style.color = cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
+  
+    // Append elements to their respective parents
+    descContainer.appendChild(nameElement);
+    descContainer.appendChild(extraInfo);
+  
+    productCard.appendChild(img);
+    productCard.appendChild(hr);
+    productCard.appendChild(descContainer);
+  
+    productsContainer.appendChild(productCard);
+  });
+  }
 
 /**
  * Function to check if the username exists in the database.
