@@ -29,6 +29,7 @@
             <div class="listing-container">
                 <h1>Add a Listing</h1>
                 <form id="listingForm">
+                    <input type="hidden" id="listingType" name="type" value="product">
                     <div class="headbar">
                         <button id="productButton" onclick="showProductForm()" class="form-button" type="button">Product</button>
                         <button id="serviceButton" onclick="showServiceForm()" class="form-button" type="button">Service</button>
@@ -316,6 +317,7 @@
                 document.getElementById("serviceForm").style.display = "none";
                 document.getElementById("productButton").classList.add("selected");
                 document.getElementById("serviceButton").classList.remove("selected");
+                document.getElementById("listingType").value = "product";
             }
 
             function showServiceForm() {
@@ -323,6 +325,7 @@
                 document.getElementById("serviceForm").style.display = "block";
                 document.getElementById("productButton").classList.remove("selected");
                 document.getElementById("serviceButton").classList.add("selected");
+                document.getElementById("listingType").value = "service";
             }
 
 

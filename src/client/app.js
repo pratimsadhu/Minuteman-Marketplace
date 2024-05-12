@@ -285,14 +285,16 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let type = document.querySelector('input[name="type"]:checked').value;
+    let type = document.getElementById("listingType").value;
+    let item;
+
     if (type === "product") {
       let name = document.getElementById("productName").value;
       let email = document.getElementById("productEmail").value;
       let phone = document.getElementById("productPhone").value;
       let price = document.getElementById("productPrice").value;
 
-      const item = {
+      item = {
         type: type,
         name: name,
         email: email,
@@ -304,7 +306,7 @@ document
       let email = document.getElementById("serviceEmail").value;
       let phone = document.getElementById("servicePhone").value;
 
-      const item = {
+      item = {
         type: type,
         name: name,
         email: email,
