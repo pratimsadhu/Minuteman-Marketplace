@@ -250,6 +250,11 @@ h1 {
     font-family: "Newsreader", serif;
 }
 
+.button-group button.active {
+    background-color: #881c1c; /* Change this to the color you prefer */
+    color: #ffffff; /* Change this to the color you prefer */
+}
+
 .button-group button:hover,
 #products.active,
 #services.active {
@@ -461,3 +466,39 @@ input[type="password"] {
     opacity: 0;
     top: -50px;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* adjusted margin */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* adjusted width */
+    height: auto; /* auto height */
+  }
+  
+  
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

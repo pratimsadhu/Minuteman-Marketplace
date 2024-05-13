@@ -191,10 +191,10 @@
         <!-- Products Section -->
         <div id="products" class="content">
             <div class="button-group">
-                <button href="#products" onclick="navigate('products')">
+                <button href="#products" onclick="navigate('products')" class="active">
                     Products
                 </button>
-                <button href="#services" onclick="navigate('services')">
+                <button href="#services" onclick="navigate('services')" >
                     Services
                 </button>
             </div>
@@ -229,7 +229,7 @@
                 <button href="#products" onclick="navigate('products')">
                     Products
                 </button>
-                <button href="#services" onclick="navigate('services')">
+                <button href="#services" onclick="navigate('services')" class="active">
                     Services
                 </button>
             </div>
@@ -261,28 +261,6 @@
                     <h3>Popular Services</h3>
                 </div>
                 <div class="services-container">
-                    <div class="service-card">
-                        <img src="../Images/Service1.png" alt="Service 1" />
-                        <hr />
-                        <div class="companyname">Craig's Barbershop</div>
-                        <div class="rating">Rating: 4.5/5 ★ (587)</div>
-                    </div>
-
-                    <div class="service-card">
-                        <img src="../Images/photography.jpg" alt="Service 2" />
-                        <hr />
-                        <div class="companyname">Josh Bell Photography</div>
-                        <div class="rating">Rating: 4.92/5 ★ (53)</div>
-                    </div>
-
-                    <div class="service-card">
-                        <img src="../Images/gym.jpg" alt="Service 3" />
-                        <hr />
-                        <div class="companyname">
-                            CampusEdge Personal Training
-                        </div>
-                        <div class="rating">Rating: 4.21/5 ★ (23)</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -323,39 +301,29 @@
                 <p>&copy; 2024 Minutemen Market. All rights reserved.</p>
             </div>
         </div>
-
         <div id="login" class="content">
             <div class="login-container">
                 <h1>Login to Minutemen Marketplace</h1>
                 <form id="loginForm">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required />
-
+        
                     <label for="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        required
-                    />
-
-                    <button
-                        onclick="loginScript()"
-                        class="form-button"
-                        type="button"
-                    >
-                        Login
-                    </button>
-                    <button
-                        onclick="switchToSignup()"
-                        class="switch-button"
-                        type="button"
-                    >
-                        Switch to Signup
-                    </button>
+                    <input type="password" id="password" name="password" required />
+        
+                    <button onclick="loginScript()" class="form-button" type="button">Login</button>
+                    <button onclick="switchToSignup()" class="switch-button" type="button">Switch to Signup</button>
+                    <!-- Add logout button -->
+                    <button onclick="logout()" class="form-button" type="button">Logout</button>
                 </form>
             </div>
-        </div>
+        </div>        
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p id="modalText"></p>
+            </div>
+          </div>          
 
         <!-- Signup Section -->
         <div id="signup" class="content hidden">

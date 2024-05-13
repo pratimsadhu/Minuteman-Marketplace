@@ -14,8 +14,8 @@ function navigate(page) {
     }
 }
 
-function isAuthenticated(){
-  return localStorage.getItem("token") !== null;
+function isAuthenticated() {
+    return localStorage.getItem("token") !== null;
 }
 
 /**
@@ -118,52 +118,85 @@ function renderGoods(prodServ) {
         });
     } else {
         productsContainer = document.querySelector(".products-container");
-        fetchProducts().then((data) => {helper(data, productsContainer,cardClass)});
+        fetchProducts().then((data) => { helper(data, productsContainer, cardClass) });
     }
 }
 
-    // Clear existing content in the container
+// Clear existing content in the container
 function helper(products, productsContainer, cardClass) {
-        productsContainer.innerHTML = "";
-        // Loop through products and create cards
-        products.forEach((product) => {
-            const productCard = document.createElement("div");
-            productCard.classList.add(cardClass);
+    productsContainer.innerHTML = "";
+    // Check if token exists in localStorage
+    const hasToken = localStorage.getItem("token") !== null;
 
-            const img = document.createElement("img");
-            img.src = product.imageSrc;
-            img.alt = product.alt;
+    // Loop through products and create cards
+    products.forEach((product) => {
+        const productCard = document.createElement("div");
+        productCard.classList.add(cardClass);
 
-            const hr = document.createElement("hr");
+        const img = document.createElement("img");
+        img.src = product.imageSrc;
+        img.alt = product.alt;
 
-            const descContainer = document.createElement("div");
-            descContainer.classList.add("desc-container");
+        const hr = document.createElement("hr");
 
-            const nameElement = document.createElement("div");
-            nameElement.classList.add(
-                cardClass === "product-card" ? "productname" : "companyname"
-            );
-            nameElement.textContent = product.name;
+        const descContainer = document.createElement("div");
+        descContainer.classList.add("desc-container");
 
-            const extraInfo = document.createElement("div");
-            extraInfo.classList.add(
-                cardClass === "product-card" ? "price" : "rating"
-            );
-            extraInfo.textContent =`Price: ${product.price}`
-            extraInfo.style.fontSize = "16px";
-            extraInfo.style.color =
-                cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
+        const nameButton = document.createElement("button"); // Change div to button
+        nameButton.classList.add(
+            cardClass === "product-card" ? "productname" : "companyname"
+        );
+        nameButton.textContent = product.name;
+        nameButton.addEventListener("click", () => {
+            // Open modal with ingetation
+            const modal = document.getElementById("myModal");
+            const modalText = document.getElementById("modalText");
 
-            // Append elements to their respective parents
-            descContainer.appendChild(nameElement);
-            descContainer.appendChild(extraInfo);
-            productCard.appendChild(img);
-            productCard.appendChild(hr);
-            productCard.appendChild(descContainer);
+            // Check if user has token, if not, show masked email
+            const emailContent = hasToken ? product.email : "Hidden Email";
+            const loginPrompt = hasToken ? "" : "Please log in to view contact information.";
+            modalText.innerHTML = `
+              Please contact provider for more details.<br>
+              Contact them via:<br>
+              Email: ${emailContent}<br>
+              ${loginPrompt}
+            `;
+            modal.style.display = "block";
 
-            productsContainer.appendChild(productCard);
+            // Close modal when close button is clicked
+            const closeBtn = document.getElementsByClassName("close")[0];
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Close modal when user clicks anywhere outside of the modal
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         });
-    }
+
+        const extraInfo = document.createElement("div");
+        extraInfo.classList.add(
+            cardClass === "product-card" ? "price" : "rating"
+        );
+        extraInfo.textContent = `Price: ${product.price}`
+        extraInfo.style.fontSize = "16px";
+        extraInfo.style.color =
+            cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
+
+        // Append elements to their respective parents
+        descContainer.appendChild(nameButton);
+        descContainer.appendChild(extraInfo);
+        productCard.appendChild(img);
+        productCard.appendChild(hr);
+        productCard.appendChild(descContainer);
+
+        productsContainer.appendChild(productCard);
+    });
+}
+
 
 /**
  * Function to check if the username exists in the database.
@@ -187,29 +220,66 @@ async function checkUsername(username) {
  * Function to handle user login.
  */
 function loginScript() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    const formData = {
+        "email": username,
+        "password": password
+    };
+    if (localStorage.getItem("token") !== null) {
+        console.log(localStorage.getItem("token"));
+        showNotification("You are already logged in",1500);
+        document.getElementById("username").value=""
+        document.getElementById("password").value=""
+        navigate("home"); // Redirect to dashboard page
+    } else {
+        fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json(); // Parse response body as JSON
+                } else {
+                    throw new Error("Invalid username or password");
+                }
+            })
+            .then((data) => {
+                // Assuming the server returns a token upon successful login
+                const token = data.token;
+                // Store the token in localStorage for future authenticated requests
+                localStorage.setItem("token", token);
+                // Redirect or perform actions after successful login
+                document.getElementById("username").value=""
+                document.getElementById("password").value=""
+                showNotification("Login successful");
+                navigate("home"); // Redirect to dashboard page
+            })
+            .catch((error) => {
+                console.error("Login Error:", error);
+                showNotification("Invalid username or password. Please try again.");
+            });
+    }
+}
 
-    fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-    })
-    .then((response) => {
-        if (response.ok) {
-            alert("Login successful");
-            localStorage.setItem("token", "your_token_here");
-            // Redirect or perform actions after successful login
-        } else {
-            throw new Error("Invalid username or password");
-        }
-    })
-    .catch((error) => {
-        console.error("Login Error:", error);
-        alert("Invalid username or password");
-    });
+function logout() {
+    // Check if the user is already logged out
+    if (localStorage.getItem("token") === null) {
+        showNotification("You are already logged out", 1500);
+        return;
+    }
+
+    // Perform logout actions
+    // For example, clearing the token from localStorage
+    localStorage.removeItem("token");
+
+    // Redirect to the login page or perform any other action
+    // Here, I'm redirecting to the login page for demonstration purposes
+    navigate("home"); // Replace "login" with the path to your login page
+    showNotification("Logout successful");
 }
 
 
@@ -217,74 +287,47 @@ function loginScript() {
  * Function to handle user signup.
  */
 function signupScript() {
-    const newUsername = document.getElementById("newUsername").value;
-    const newPassword = document.getElementById("newPassword").value;
-
+    const email = document.getElementById("newUsername").value;
+    const password = document.getElementById("newPassword").value;
+    const testName = "testName"
+    const formData = {
+        "name": testName,
+        "email": email,
+        "password": password
+    };
+    console.log(formData)
     fetch("/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: newUsername, password: newPassword }),
+        body: JSON.stringify(formData),
     })
-    .then((response) => {
-        if (response.ok) {
-            alert("Signup successful");
-            // Redirect or perform actions after successful signup
-        } else {
-            throw new Error("Username already exists or other error");
-        }
-    })
-    .catch((error) => {
-        console.error("Signup Error:", error);
-        alert("Username already exists or other error occurred");
-    });
+        .then((response) => {
+            if (response.ok) {
+                return response.json(); // Parse response body as JSON
+            } else {
+                throw new Error("Failed to sign up");
+            }
+        })
+        .then((data) => {
+            const token = data.token;
+            localStorage.setItem("token", token);
+            document.getElementById("newUsername").value = "";
+            document.getElementById("newPassword").value = "";
+            navigate("login");
+            document.getElementById("username").value = email;
+            showNotification("Signup successful, please log in and enjoy the app!");
+        })
+        .catch((error) => {
+            document.getElementById("newUsername").value = "";
+            document.getElementById("newPassword").value = "";
+            console.error("Signup Error:", error);
+            showNotification("Failed to sign up. Please try again.");
+        });
+
 }
 
-
-const goods = [
-    {
-        name: "I-Clicker",
-        imageSrc: "./Images/iclicker.jpg",
-        alt: "Service 1",
-        price: "26$",
-    },
-    {
-        name: "Table Lamp",
-        imageSrc: "./Images/tablelamp.jpg",
-        alt: "Service 2",
-        price: "22$",
-    },
-    {
-        name: "Book Shelf",
-        imageSrc: "./Images/bookshelf.jpg",
-        alt: "Service 3",
-        price: "87$",
-    },
-];
-const services = [
-    {
-        name: "Craig's Barbershop",
-        imageSrc: "./Images/Service1.png",
-        alt: "Service 1",
-        rating: "4.5",
-        numOfReviews: 587,
-    },
-    {
-        name: "Josh Bell Photography",
-        imageSrc: "./Images/photography.jpg",
-        alt: "Service 2",
-        rating: "4.92",
-        numOfReviews: 53,
-    },
-    {
-        name: "CampusEdge Personal Training",
-        imageSrc: "./Images/gym.jpg",
-        alt: "Service 3",
-        rating: "4.21",
-        numOfReviews: 23,
-    },
-];
 
 document
     .getElementById("contactForm")
@@ -300,6 +343,11 @@ document
             email: email,
             message: message,
         };
+        if(!isAuthenticated()){
+            showNotification("Please log in to send an email.", 1500);
+            navigate("login");
+            return;
+        }
 
         fetch("/email", {
             method: "POST",
@@ -332,9 +380,9 @@ document
         let item;
 
         if (!isAuthenticated()) {
-          showNotification("Please log in to add a listing.");
-          navigate("login");
-          return;
+            showNotification("Please log in to add a listing.");
+            navigate("login");
+            return;
         }
 
         async function encodeImages(files) {
