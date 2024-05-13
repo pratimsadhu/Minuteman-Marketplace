@@ -148,7 +148,7 @@ function helper(products, productsContainer, cardClass) {
         );
         nameButton.textContent = product.name;
         nameButton.addEventListener("click", () => {
-            // Open modal with information
+            // Open modal with ingetation
             const modal = document.getElementById("myModal");
             const modalText = document.getElementById("modalText");
 
@@ -343,6 +343,11 @@ document
             email: email,
             message: message,
         };
+        if(!isAuthenticated()){
+            showNotification("Please log in to send an email.", 1500);
+            navigate("login");
+            return;
+        }
 
         fetch("/email", {
             method: "POST",
