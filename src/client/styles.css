@@ -250,6 +250,11 @@ h1 {
     font-family: "Newsreader", serif;
 }
 
+.button-group button.active {
+    background-color: #881c1c; /* Change this to the color you prefer */
+    color: #ffffff; /* Change this to the color you prefer */
+}
+
 .button-group button:hover,
 #products.active,
 #services.active {
