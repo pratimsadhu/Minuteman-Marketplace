@@ -35,3 +35,5 @@ users/CURRENT
 users/LOG
 users/LOG.old
 users/MANIFEST-000179
+user/*
+marketplace/*

@@ -123,28 +123,33 @@ function renderGoods(prodServ) {
 }
 
     // Clear existing content in the container
-function helper(products, productsContainer, cardClass) {
+    function helper(products, productsContainer, cardClass) {
         productsContainer.innerHTML = "";
         // Loop through products and create cards
         products.forEach((product) => {
             const productCard = document.createElement("div");
             productCard.classList.add(cardClass);
-
+    
             const img = document.createElement("img");
             img.src = product.imageSrc;
             img.alt = product.alt;
-
+    
             const hr = document.createElement("hr");
-
+    
             const descContainer = document.createElement("div");
             descContainer.classList.add("desc-container");
-
-            const nameElement = document.createElement("div");
-            nameElement.classList.add(
+    
+            const nameButton = document.createElement("button"); // Change div to button
+            nameButton.classList.add(
                 cardClass === "product-card" ? "productname" : "companyname"
             );
-            nameElement.textContent = product.name;
-
+            nameButton.textContent = product.name;
+            nameButton.addEventListener("click", () => {
+                // Popup with information
+                alert(`Additional Information:
+    ${product.additionalInfo}`);
+            });
+    
             const extraInfo = document.createElement("div");
             extraInfo.classList.add(
                 cardClass === "product-card" ? "price" : "rating"
@@ -153,17 +158,16 @@ function helper(products, productsContainer, cardClass) {
             extraInfo.style.fontSize = "16px";
             extraInfo.style.color =
                 cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
-
-            // Append elements to their respective parents
-            descContainer.appendChild(nameElement);
+            descContainer.appendChild(nameButton);
             descContainer.appendChild(extraInfo);
             productCard.appendChild(img);
             productCard.appendChild(hr);
             productCard.appendChild(descContainer);
-
+    
             productsContainer.appendChild(productCard);
         });
     }
+    
 
 /**
  * Function to check if the username exists in the database.
