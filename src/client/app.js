@@ -199,12 +199,20 @@ function loginScript() {
     })
     .then((response) => {
         if (response.ok) {
-            alert("Login successful");
-            localStorage.setItem("token", "your_token_here");
-            // Redirect or perform actions after successful login
+            return response.json(); // Parse response body as JSON
         } else {
             throw new Error("Invalid username or password");
         }
+    })
+    .then((data) => {
+        // Assuming the server returns a token upon successful login
+        const token = data.token;
+
+        // Store the token in localStorage for future authenticated requests
+        localStorage.setItem("token", token);
+
+        // Redirect or perform actions after successful login
+        window.location.href = "/dashboard"; // Redirect to dashboard page
     })
     .catch((error) => {
         console.error("Login Error:", error);
@@ -213,78 +221,44 @@ function loginScript() {
 }
 
 
+
 /**
  * Function to handle user signup.
  */
 function signupScript() {
-    const newUsername = document.getElementById("newUsername").value;
-    const newPassword = document.getElementById("newPassword").value;
-
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const testName = "testName"
+    const formData = {
+        name: testName,
+        username: username,
+        password: password
+    };
     fetch("/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: newUsername, password: newPassword }),
+        body: JSON.stringify(formData),
     })
     .then((response) => {
         if (response.ok) {
-            alert("Signup successful");
-            // Redirect or perform actions after successful signup
+            return response.json(); // Parse response body as JSON
         } else {
-            throw new Error("Username already exists or other error");
+            throw new Error("Failed to sign up");
         }
+    })
+    .then((data) => {
+        const token = data.token;
+        localStorage.setItem("token", token);
+        window.location.href = "/welcome";
     })
     .catch((error) => {
         console.error("Signup Error:", error);
-        alert("Username already exists or other error occurred");
+        alert("Failed to sign up. Please try again.");
     });
 }
 
-
-const goods = [
-    {
-        name: "I-Clicker",
-        imageSrc: "./Images/iclicker.jpg",
-        alt: "Service 1",
-        price: "26$",
-    },
-    {
-        name: "Table Lamp",
-        imageSrc: "./Images/tablelamp.jpg",
-        alt: "Service 2",
-        price: "22$",
-    },
-    {
-        name: "Book Shelf",
-        imageSrc: "./Images/bookshelf.jpg",
-        alt: "Service 3",
-        price: "87$",
-    },
-];
-const services = [
-    {
-        name: "Craig's Barbershop",
-        imageSrc: "./Images/Service1.png",
-        alt: "Service 1",
-        rating: "4.5",
-        numOfReviews: 587,
-    },
-    {
-        name: "Josh Bell Photography",
-        imageSrc: "./Images/photography.jpg",
-        alt: "Service 2",
-        rating: "4.92",
-        numOfReviews: 53,
-    },
-    {
-        name: "CampusEdge Personal Training",
-        imageSrc: "./Images/gym.jpg",
-        alt: "Service 3",
-        rating: "4.21",
-        numOfReviews: 23,
-    },
-];
 
 document
     .getElementById("contactForm")
