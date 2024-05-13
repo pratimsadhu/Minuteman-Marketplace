@@ -77,7 +77,6 @@ printEmpowering();
 async function fetchProducts() {
     try {
         const response = await fetch("/products");
-        console.log(response.json());
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
@@ -90,8 +89,7 @@ async function fetchProducts() {
 }
 async function fetchServices() {
     try {
-        const response = await fetch("/items");
-        console.log(response.json());
+        const response = await fetch("/services");
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
@@ -109,64 +107,63 @@ async function fetchServices() {
  */
 function renderGoods(prodServ) {
     let productsContainer;
-    let products;
     const cardClass = prodServ === "services" ? "service-card" : "product-card";
-
     // Determine which container and card class to use based on input
     if (prodServ === "services") {
         productsContainer = document.querySelector(".services-container");
-        products = fetchServices();
+        fetchServices().then((data) => {
+            console.log(data);
+            helper(data, productsContainer, cardClass)
+
+        });
     } else {
         productsContainer = document.querySelector(".products-container");
-        products = fetchProducts();
+        fetchProducts().then((data) => {helper(data, productsContainer,cardClass)});
     }
+}
 
     // Clear existing content in the container
-    productsContainer.innerHTML = "";
+function helper(products, productsContainer, cardClass) {
+        productsContainer.innerHTML = "";
+        // Loop through products and create cards
+        products.forEach((product) => {
+            const productCard = document.createElement("div");
+            productCard.classList.add(cardClass);
 
-    // Loop through products and create cards
-    products.forEach((product) => {
-        const productCard = document.createElement("div");
-        productCard.classList.add(cardClass);
+            const img = document.createElement("img");
+            img.src = product.imageSrc;
+            img.alt = product.alt;
 
-        const img = document.createElement("img");
-        img.src = product.imageSrc;
-        img.alt = product.alt;
+            const hr = document.createElement("hr");
 
-        const hr = document.createElement("hr");
+            const descContainer = document.createElement("div");
+            descContainer.classList.add("desc-container");
 
-        const descContainer = document.createElement("div");
-        descContainer.classList.add("desc-container");
+            const nameElement = document.createElement("div");
+            nameElement.classList.add(
+                cardClass === "product-card" ? "productname" : "companyname"
+            );
+            nameElement.textContent = product.name;
 
-        const nameElement = document.createElement("div");
-        nameElement.classList.add(
-            cardClass === "product-card" ? "productname" : "companyname"
-        );
-        nameElement.textContent = product.name;
+            const extraInfo = document.createElement("div");
+            extraInfo.classList.add(
+                cardClass === "product-card" ? "price" : "rating"
+            );
+            extraInfo.textContent =`Price: ${product.price}`
+            extraInfo.style.fontSize = "16px";
+            extraInfo.style.color =
+                cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
 
-        const extraInfo = document.createElement("div");
-        extraInfo.classList.add(
-            cardClass === "product-card" ? "price" : "rating"
-        );
-        extraInfo.textContent =
-            cardClass === "product-card"
-                ? `Price: ${product.price}`
-                : `Rating: ${product.rating}/5★ (${product.numOfReviews})`;
-        extraInfo.style.fontSize = "16px";
-        extraInfo.style.color =
-            cardClass === "product-card" ? "#883202" : "#000"; // Adjust color based on card type
+            // Append elements to their respective parents
+            descContainer.appendChild(nameElement);
+            descContainer.appendChild(extraInfo);
+            productCard.appendChild(img);
+            productCard.appendChild(hr);
+            productCard.appendChild(descContainer);
 
-        // Append elements to their respective parents
-        descContainer.appendChild(nameElement);
-        descContainer.appendChild(extraInfo);
-
-        productCard.appendChild(img);
-        productCard.appendChild(hr);
-        productCard.appendChild(descContainer);
-
-        productsContainer.appendChild(productCard);
-    });
-}
+            productsContainer.appendChild(productCard);
+        });
+    }
 
 /**
  * Function to check if the username exists in the database.
