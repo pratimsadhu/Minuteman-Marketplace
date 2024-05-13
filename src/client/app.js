@@ -189,36 +189,43 @@ async function checkUsername(username) {
 function loginScript() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-
-    fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-    })
-    .then((response) => {
-        if (response.ok) {
-            return response.json(); // Parse response body as JSON
+    const formData = {
+        "email": username,
+        "password": password
+    };
+        if (localStorage.getItem("token") !== null) {
+            console.log(localStorage.getItem("token"));
+            alert("You are already logged in");
+            navigate("home"); // Redirect to dashboard page
         } else {
-            throw new Error("Invalid username or password");
+            fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json(); // Parse response body as JSON
+                    } else {
+                        throw new Error("Invalid username or password");
+                    }
+                })
+                .then((data) => {
+                    // Assuming the server returns a token upon successful login
+                    const token = data.token;
+                    // Store the token in localStorage for future authenticated requests
+                    localStorage.setItem("token", token);
+                    // Redirect or perform actions after successful login
+                    navigate("home"); // Redirect to dashboard page
+                })
+                .catch((error) => {
+                    console.error("Login Error:", error);
+                    alert("Invalid username or password");
+                });
         }
-    })
-    .then((data) => {
-        // Assuming the server returns a token upon successful login
-        const token = data.token;
-
-        // Store the token in localStorage for future authenticated requests
-        localStorage.setItem("token", token);
-
-        // Redirect or perform actions after successful login
-        window.location.href = "/dashboard"; // Redirect to dashboard page
-    })
-    .catch((error) => {
-        console.error("Login Error:", error);
-        alert("Invalid username or password");
-    });
-}
+    }
 
 
 
@@ -226,14 +233,15 @@ function loginScript() {
  * Function to handle user signup.
  */
 function signupScript() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("newUsername").value;
+    const password = document.getElementById("newPassword").value;
     const testName = "testName"
     const formData = {
-        name: testName,
-        username: username,
-        password: password
+        "name": testName,
+        "email": email,
+        "password": password
     };
+    console.log(formData)
     fetch("/signup", {
         method: "POST",
         headers: {
@@ -251,7 +259,7 @@ function signupScript() {
     .then((data) => {
         const token = data.token;
         localStorage.setItem("token", token);
-        window.location.href = "/welcome";
+        navigate("login");
     })
     .catch((error) => {
         console.error("Signup Error:", error);
