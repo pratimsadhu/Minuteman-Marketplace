@@ -343,11 +343,6 @@ document
             email: email,
             message: message,
         };
-        if(!isAuthenticated()){
-            showNotification("Please log in to send an email.", 1500);
-            navigate("login");
-            return;
-        }
 
         fetch("/email", {
             method: "POST",

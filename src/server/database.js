@@ -272,7 +272,7 @@ async function receiveEmail(req, res) {
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "psadhu@umass.edu",
+            to: "sbadheka@umass.edu",
             subject: `${name} <${email}> contacted you - Minuteman Marketplace!`,
             text: message,
             html: `<p><strong>${name}</strong> (<a href="mailto:${email}">${email}</a>) sent you a message:</p><p>${message}</p>`,
